@@ -6,6 +6,8 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Mail;
+
 
 class RegisterController extends Controller
 {
@@ -27,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/register';
 
     /**
      * Create a new controller instance.
@@ -63,23 +65,42 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
+        $confirmation_code = str_random(30);
         $User  = new  User();
         $User->first_name        = $data['first_name'];
         $User->last_name         = $data['last_name'];
         $User->phone_no          = $data['phone_no'];
         $User->email             = $data['email'];
         $User->password          = bcrypt($data['password']);
+        $User->confirmation_code = $confirmation_code;
         $User->save();
-        return $User;
+
+        $email = $data['email'];
+        $name = $data['first_name'];
 
 
-//        return User::create([
-//            'first_name' => $data['first_name'],
-//            'last_name' => $data['last_name'],
-//            'phone_no' => $data['phone_no'],
-//            'email' => $data['email'],
-//            'password' => bcrypt($data['password']),
-//        ]);
+        Mail::send('email.verify', $User->toArray(), function($message) use($email,$name) {
+            $message->to($email,$name)
+                ->subject('Verify your email address');
+        });
+        
+        return redirect()->back()->with('message', 'Office successfully added.');
+
+    }
+
+    public function confirm($confirmation_code)
+    {
+        if( ! $confirmation_code)
+            return view('auth.confirm')->with('message', 'Invalid Code.');
+
+        $user = User::whereConfirmationCode($confirmation_code)->first();
+
+        if ( ! $user)
+            return view('auth.confirm')->with('message', 'Invalid Code.');
+
+        $user->confirmed         = 1;
+        $user->confirmation_code = null;
+        $user->save();
+        return redirect('/login')->with('message', 'Office successfully added.');
     }
 }
