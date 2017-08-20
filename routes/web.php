@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
 Route::get('/register/confirm/{confirmationCode}', [
     'uses' => 'Auth\RegisterController@confirm'
 ]);
@@ -26,3 +27,7 @@ Route::get('/register/confirm/{confirmationCode}', [
 Route::get('/auth/confirm', [
     'uses' => 'Auth\RegisterController@confirm'
 ]);
+
+Route::get('/personalinformation', 'PersonalInformationController@create');
+
+Route::post('/personalinformation/store', 'PersonalInformationController@store');
