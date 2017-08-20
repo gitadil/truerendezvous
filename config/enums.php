@@ -6,7 +6,7 @@ return [
         '0'=>'male',
         '1'=>'female',
     ],
-    
+
 
     'marital_status_id' => [
         '0'=>'single',
@@ -291,6 +291,8 @@ return [
         '248'=>'Zambia',
         '249'=>'Zimbabwe',
     ],
+
+    
 
 
 
