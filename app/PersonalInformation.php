@@ -8,7 +8,7 @@ class PersonalInformation extends Model
 {
     //
 
-    protected $fillable = ['series_id','team_id'];
+    protected $guarded = ['user_id'];
 
     //Excluded Attributes
 

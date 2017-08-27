@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use App\PersonalInformation;
 use stdClass;
+use Faker\Provider\Uuid;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class PersonalInformationController extends Controller
@@ -26,20 +29,12 @@ class PersonalInformationController extends Controller
          $this->middleware('auth');
     }
 
-    Public function create(Request $request)
+    Public function create()
     {
-        $personalInfo = new PersonalInformation();
-        if(empty($request->id))
-        {
-            $personalInfo->id=0;
-        }
-        else
-        {
-            $personalInfo = PersonalInformation::find($request->id);
-        }
-       $dropdowns= $this->BindDropDowns();
 
-        return view('profile.personalinformation')->with('Model',$personalInfo)->with('dropdowns',$dropdowns);
+        $personalInfo = PersonalInformation::where('user_id', Auth::user()->guid)->first();
+        $dropdowns    = $this->BindDropDowns();
+        return        view('profile.personalinformation')->with('Model',$personalInfo)->with('dropdowns',$dropdowns);
     }
 
     Public function store(Request $request)
@@ -57,24 +52,43 @@ class PersonalInformationController extends Controller
         $personalInfo->mother_tongue     = (!empty($request->mother_tongue)) ? $request->mother_tongue : '';
         $personalInfo->biography         = (!empty($request->biography)) ? $request->biography : '';
         $personalInfo->nationality_id    = (!empty($request->nationality_id)) ? $request->nationality_id : '';
-        $personalInfo->user_id           = (!empty($request->user_id)) ? $request->user_id : '';
 
-
+        $dropdowns = $this->BindDropDowns();
 
         if(empty($request->id)) //Add
         {
+            $personalInfo->user_id = Auth::user()->guid;
             $personalInfo->save();
             $message = 'Record Added Successfully';
             $heading = 'Profile Information';
-            return redirect('/personalinformation')->with($message, $heading);
+            return redirect('/personalinformation')->with($message, $heading,$dropdowns);
         }
         else //Update
         {
-            $personalInfo = PersonalInformation::find($request->id);
-            $personalInfo->save();
+            $affectedRows = PersonalInformation::where('user_id', '=', Auth::user()->guid)
+                ->update(array('gender_id' =>$personalInfo->gender_id,
+                               'dob' =>$personalInfo->dob,
+                               'marital_status_id' =>$personalInfo->marital_status_id,
+                               'religion_id' =>$personalInfo->religion_id,
+                               'height' =>$personalInfo->height,
+                               'body_type_id' =>$personalInfo->body_type_id,
+                               'skin_tone_id' =>$personalInfo->skin_tone_id,
+                               'cast_id' =>$personalInfo->cast_id,
+                               'place_of_birth_id' =>$personalInfo->place_of_birth_id,
+                               'mother_tongue' =>$personalInfo->mother_tongue,
+                               'biography' =>$personalInfo->biography,
+                               'nationality_id' =>$personalInfo->nationality_id
+                    )
+                );
+
+            echo $affectedRows;
+            exit();
+
+
+           // $personalInfo->save();
             $message = 'Record Added Successfully';
             $heading = 'Profile Information';
-            return redirect('/personalinformation')->with($message, $heading);
+            return redirect('/personalinformation')->with($message, $heading,$dropdowns);
         }
 
     }
