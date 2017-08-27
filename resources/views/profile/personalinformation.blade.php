@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">{{$heading}}</div>
+                   {{--<div class="panel-heading">{{$heading}}</div>--}}
                     @if(Session::has('message'))
                         <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
                     @endif
@@ -14,7 +14,8 @@
                             {{ csrf_field() }}
 
                             @if(Auth::check())
-                            <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
+                            <input name="user_id" type="hidden" value="{{Auth::user()->guid}}">
+                            <input name="id" type="hidden" value="{{$Model->id}}">
                             @endif
 
                             <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
@@ -24,8 +25,12 @@
 
                                     <select id="gender_id" required name="gender_id" class="form-control">
                                         <option value="">Select Gender</option>
-                                        @foreach($gender as $key =>$value)
-                                            <option value="{{$key}}">{{$value}}</option>
+
+                                       {{--// @if($dropdowns)--}}
+
+                                        {{--@endif--}}
+                                        @foreach($dropdowns->gender as $key =>$value)
+                                            <option value="{{$key}}"  @if( $key== $Model->gender_id ) selected @endif >{{$value}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -36,7 +41,7 @@
                                 <label for="dob" class="col-md-4 control-label">DOB</label>
 
                                 <div class="col-md-6">
-                                    <input id="dob" type="date" class="form-control" name="dob" value="{{ old('dob') }}" required autofocus>
+                                    <input id="dob" type="date" class="form-control" name="dob" value="{{$Model->dob }}" required autofocus>
 
                                     @if ($errors->has('dob'))
                                         <span class="help-block">
@@ -51,7 +56,7 @@
                                 <label for="biography" class="col-md-4 control-label">Biography</label>
 
                                 <div class="col-md-6">
-                                    <input id="biography" type="text" class="form-control" name="biography" value="{{ old('dob') }}" required autofocus>
+                                    <input id="biography" type="text" class="form-control" name="biography" value="{{ $Model->biography }}" required autofocus>
 
                                     @if ($errors->has('biography'))
                                         <span class="help-block">
@@ -68,8 +73,8 @@
                                     <select id="marital_status_id" required name="marital_status_id"
                                             class="form-control">
                                         <option value="">Select Marital Status</option>
-                                        @foreach($marital_status as $key =>$value)
-                                            <option value="{{$key}}">{{$value}}</option>
+                                        @foreach($dropdowns->marital_status as $key =>$value)
+                                            <option value="{{$key}}" @if( $key== $Model->marital_status_id ) selected @endif >{{$value}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -81,8 +86,8 @@
                                 <div class="col-md-6">
                                     <select id="religion_id" required name="religion_id" class="form-control">
                                         <option value="">Select Gender</option>
-                                        @foreach($religion as $key =>$value)
-                                            <option value="{{$key}}">{{$value}}</option>
+                                        @foreach($dropdowns->religion as $key =>$value)
+                                            <option value="{{$key}}" @if( $key== $Model->religion_id ) selected @endif >{{$value}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -95,7 +100,7 @@
                                 <div class="col-md-6">
                                     <select id="body_type_id" required name="body_type_id" class="form-control">
                                         <option value="">Select Body Type</option>
-                                        @foreach($body_type as $key =>$value)
+                                        @foreach($dropdowns->body_type as $key =>$value)
                                             <option value="{{$key}}">{{$value}}</option>
                                         @endforeach
                                     </select>
@@ -109,7 +114,7 @@
                                 <div class="col-md-6">
                                     <select id="skin_tone_id" required name="skin_tone_id" class="form-control">
                                         <option value="">Select Skin Type</option>
-                                        @foreach($skin_tone as $key =>$value)
+                                        @foreach($dropdowns->skin_tone as $key =>$value)
                                             <option value="{{$key}}">{{$value}}</option>
                                         @endforeach
                                     </select>
@@ -122,7 +127,7 @@
                                 <div class="col-md-6">
                                     <select id="height" required name="height" class="form-control">
                                         <option value="">Select Height</option>
-                                        @foreach($height as $key =>$value)
+                                        @foreach($dropdowns->height as $key =>$value)
                                             <option value="{{$key}}">{{$value}}</option>
                                         @endforeach
                                     </select>
@@ -136,7 +141,7 @@
                                 <div class="col-md-6">
                                     <select id="cast_id" required name="cast_id" class="form-control">
                                         <option value="">Select Cast</option>
-                                        @foreach($cast as $key =>$value)
+                                        @foreach($dropdowns->cast as $key =>$value)
                                             <option value="{{$key}}">{{$value}}</option>
                                         @endforeach
                                     </select>
@@ -150,7 +155,7 @@
                                     <select id="place_of_birth_id" required name="place_of_birth_id"
                                             class="form-control">
                                         <option value="">Select Birth Place</option>
-                                        @foreach($nationality as $key =>$value)
+                                        @foreach($dropdowns->nationality as $key =>$value)
                                             <option value="{{$key}}">{{$value}}</option>
                                         @endforeach
                                     </select>
@@ -163,7 +168,7 @@
                                 <div class="col-md-6">
                                     <select id="mother_tongue" required name="mother_tongue" class="form-control">
                                         <option value="">Select Cast</option>
-                                        @foreach($mother_tongue as $key =>$value)
+                                        @foreach($dropdowns->mother_tongue as $key =>$value)
                                             <option value="{{$key}}">{{$value}}</option>
                                         @endforeach
                                     </select>
@@ -176,8 +181,8 @@
                                 <div class="col-md-6">
                                     <select id="nationality_id" required name="nationality_id" class="form-control">
                                         <option value="">Select Nationality</option>
-                                        @foreach($nationality as $key =>$value)
-                                            <option value="{{$key}}">{{$value}}</option>
+                                        @foreach($dropdowns->nationality as $key =>$value)
+                                            <option value="{{$key}}" @if( $key== $Model->nationality_id ) selected @endif >{{$value}}</option>
                                         @endforeach
                                     </select>
                                 </div>

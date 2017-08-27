@@ -5,36 +5,46 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use App\PersonalInformation;
+use stdClass;
 
 
 class PersonalInformationController extends Controller
 {
+//    protected static $heading        = 'Personal Information';
+//    public static $gender    ;
+//    protected $marital_status ;
+//    protected $religion       ;
+//    protected $body_type      ;
+//    protected $skin_tone      ;
+//    protected $cast          ;
+//    protected $mother_tongue;
+//    protected $nationality;
+//    protected $height;
 
     public function __construct()
     {
-        $this->middleware('auth');
+         $this->middleware('auth');
     }
 
-    Public function create()
+    Public function create(Request $request)
     {
-        $heading        = 'Personal Information';
-        $gender         = Config::get('enums.gender');
-        $marital_status = Config::get('enums.marital_status');
-        $religion       = Config::get('enums.religion');
-        $body_type      = Config::get('enums.body_type');
-        $skin_tone      = Config::get('enums.skin_tone');
-        $cast           = Config::get('enums.cast');
-        $mother_tongue  = Config::get('enums.mother_tongue');
-        $nationality    = Config::get('enums.nationality');
-        $height         = Config::get('enums.height');
+        $personalInfo = new PersonalInformation();
+        if(empty($request->id))
+        {
+            $personalInfo->id=0;
+        }
+        else
+        {
+            $personalInfo = PersonalInformation::find($request->id);
+        }
+       $dropdowns= $this->BindDropDowns();
 
-        return view('profile.personalinformation',compact('height','heading','gender','marital_status','religion','body_type','skin_tone','cast','mother_tongue','nationality'));
+        return view('profile.personalinformation')->with('Model',$personalInfo)->with('dropdowns',$dropdowns);
     }
 
     Public function store(Request $request)
     {
         $personalInfo = new PersonalInformation;
-
         $personalInfo->gender_id         = (!empty($request->gender_id)) ? $request->gender_id : '';
         $personalInfo->dob               = (!empty($request->dob)) ? $request->dob : '';
         $personalInfo->marital_status_id = (!empty($request->marital_status_id)) ? $request->marital_status_id : '';
@@ -49,10 +59,40 @@ class PersonalInformationController extends Controller
         $personalInfo->nationality_id    = (!empty($request->nationality_id)) ? $request->nationality_id : '';
         $personalInfo->user_id           = (!empty($request->user_id)) ? $request->user_id : '';
 
-        $personalInfo->save();
-        $message = 'Record Added Successfully';
-        $heading = 'Profile Information';
-        return redirect('/personalinformation')->with($message, $heading);
+
+
+        if(empty($request->id)) //Add
+        {
+            $personalInfo->save();
+            $message = 'Record Added Successfully';
+            $heading = 'Profile Information';
+            return redirect('/personalinformation')->with($message, $heading);
+        }
+        else //Update
+        {
+            $personalInfo = PersonalInformation::find($request->id);
+            $personalInfo->save();
+            $message = 'Record Added Successfully';
+            $heading = 'Profile Information';
+            return redirect('/personalinformation')->with($message, $heading);
+        }
+
+    }
+    private  function BindDropDowns()
+    {
+        $dropdowns=new  stdclass();
+
+        //DropDowns
+        $dropdowns->gender = Config::get('enums.gender');
+        $dropdowns->marital_status = Config::get('enums.marital_status');
+        $dropdowns->religion       = Config::get('enums.religion');
+        $dropdowns->body_type      = Config::get('enums.body_type');
+        $dropdowns->skin_tone      = Config::get('enums.skin_tone');
+        $dropdowns->cast           = Config::get('enums.cast');
+        $dropdowns->mother_tongue  = Config::get('enums.mother_tongue');
+        $dropdowns->nationality    = Config::get('enums.nationality');
+        $dropdowns->height         = Config::get('enums.height');
+        return $dropdowns;
     }
 
 }

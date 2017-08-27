@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Mail;
+use Faker\Provider\Uuid;
 
 
 class RegisterController extends Controller
@@ -73,6 +74,7 @@ class RegisterController extends Controller
         $User->email             = $data['email'];
         $User->password          = bcrypt($data['password']);
         $User->confirmation_code = $confirmation_code;
+        $User->guid=Uuid::uuid();
         $User->save();
 
         $email = $data['email'];
