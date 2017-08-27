@@ -28,7 +28,7 @@ class PersonalInformationController extends Controller
         $nationality    = Config::get('enums.nationality');
         $height         = Config::get('enums.height');
 
-        return view('profile.personalinformaion',compact('height','heading','gender','marital_status','religion','body_type','skin_tone','cast','mother_tongue','nationality'));
+        return view('profile.personalinformation',compact('height','heading','gender','marital_status','religion','body_type','skin_tone','cast','mother_tongue','nationality'));
     }
 
     Public function store(Request $request)

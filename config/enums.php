@@ -6,6 +6,17 @@ return [
         '2' => 'Female',
         '3' => 'Others'
     ],
+    'document_type' => [
+        'PersonalImages' => '1',
+        'PersonalImagesSubType' =>[
+            'ProfilePicture' => '1',
+            'WallPicture'    => '2',
+            'GalleryPicture' => '3'
+        ],
+        'EducationalDocuments' => '2',
+        'ProfessionalDocuments' => '3'
+    ],
+
     'height' => [
         '1'=> '4ft 5in - 134cm',
         '2'=> '4ft 6in - 137cm',

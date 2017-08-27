@@ -31,3 +31,8 @@ Route::get('/auth/confirm', [
 Route::get('/personalinformation', 'PersonalInformationController@create');
 
 Route::post('/personalinformation/store', 'PersonalInformationController@store');
+
+Route::get('/educationinformation', 'EducationInformationController@create');
+
+Route::post('/educationinformation/store', 'EducationInformationController@store');
+
