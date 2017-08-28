@@ -10,7 +10,7 @@
                         <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
                     @endif
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="/educationinformation/store">
+                        <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/educationinformation/store">
                             {{ csrf_field() }}
 
                             @if(Auth::check())
@@ -50,7 +50,7 @@
                                 <label for="passing_year" class="col-md-4 control-label">Passing Year</label>
 
                                 <div class="col-md-6">
-                                    <input id="passing_year" type="date" class="form-control" name="passing_year" value="{{ old('passing_year') }}" required autofocus>
+                                    <input id="passing_year" type="text" class="form-control datepicker" name="passing_year" value="{{ old('passing_year') }}" required autofocus>
 
                                     @if ($errors->has('passing_year'))
                                         <span class="help-block">
@@ -71,6 +71,20 @@
                                             <option value="{{$key}}">{{$value}}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('path') ? ' has-error' : '' }}">
+                                <label for="institute" class="col-md-4 control-label">Document</label>
+
+                                <div class="col-md-6">
+                                    <input id="path" type="file" class="form-control" name="path" value="{{ old('path') }}" required autofocus>
+
+                                    @if ($errors->has('institute'))
+                                        <span class="help-block">
+                                        <strong>{{ $errors->first('institute') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
 

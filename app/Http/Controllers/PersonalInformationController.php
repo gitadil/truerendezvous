@@ -13,17 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class PersonalInformationController extends Controller
 {
-//    protected static $heading        = 'Personal Information';
-//    public static $gender    ;
-//    protected $marital_status ;
-//    protected $religion       ;
-//    protected $body_type      ;
-//    protected $skin_tone      ;
-//    protected $cast          ;
-//    protected $mother_tongue;
-//    protected $nationality;
-//    protected $height;
-
     public function __construct()
     {
          $this->middleware('auth');
@@ -80,13 +69,7 @@ class PersonalInformationController extends Controller
                                'nationality_id' =>$personalInfo->nationality_id
                     )
                 );
-
-            echo $affectedRows;
-            exit();
-
-
-           // $personalInfo->save();
-            $message = 'Record Added Successfully';
+            $message = 'Record Updated Successfully';
             $heading = 'Profile Information';
             return redirect('/personalinformation')->with($message, $heading,$dropdowns);
         }
@@ -94,10 +77,10 @@ class PersonalInformationController extends Controller
     }
     private  function BindDropDowns()
     {
-        $dropdowns=new  stdclass();
+        $dropdowns = new  stdclass();
 
         //DropDowns
-        $dropdowns->gender = Config::get('enums.gender');
+        $dropdowns->gender         = Config::get('enums.gender');
         $dropdowns->marital_status = Config::get('enums.marital_status');
         $dropdowns->religion       = Config::get('enums.religion');
         $dropdowns->body_type      = Config::get('enums.body_type');
