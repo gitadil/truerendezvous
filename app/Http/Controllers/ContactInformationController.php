@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\ContactInformation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use stdClass;
+use Faker\Provider\Uuid;
+use Illuminate\Support\Facades\Auth;
 
 class ContactInformationController extends Controller
 {
@@ -17,18 +20,13 @@ class ContactInformationController extends Controller
 
     Public function create(Request $request)
     {
-        $contactInfo = new ContactInformation();
-        if(empty($request->id))
+        $contactInfo = ContactInformation::where('user_id', Auth::user()->guid)->first();
+        if(empty($contactInfo))
         {
-            $contactInfo->id=0;
+            $contactInfo=new ContactInformation();
         }
-        else
-        {
-            $contactInfo = ContactInformation::find($request->id);
-        }
-        $dropdowns= $this->BindDropDowns();
-
-        return view('profile.contactinformation')->with('Model',$contactInfo)->with('dropdowns',$dropdowns);
+        $dropdowns    = $this->BindDropDowns();
+        return        view('profile.contactinformation')->with('Model',$contactInfo)->with('dropdowns',$dropdowns);
     }
 
     Public function store(Request $request)
@@ -40,9 +38,10 @@ class ContactInformationController extends Controller
         $contactInfo->country_id       = (!empty($request->country_id)) ? $request->country_id: '';
         $contactInfo->address            = (!empty($request->address)) ? $request->address: '';
         $contactInfo->user_id           = (!empty($request->user_id)) ? $request->user_id : '';
-
+        $dropdowns = $this->BindDropDowns();
         if(empty($request->id)) //Add
         {
+            $contactInfo->user_id = Auth::user()->guid;
             $contactInfo->save();
             $message = 'Record Added Successfully';
             $heading = 'Contact Information';
@@ -50,11 +49,17 @@ class ContactInformationController extends Controller
         }
         else //Update
         {
-            $contactInfo = PersonalInformation::find($request->id);
-            $contactInfo->save();
-            $message = 'Record Added Successfully';
+            $affectedRows = ContactInformation::where('user_id', '=', Auth::user()->guid)
+                ->update(array('cell_number' =>$contactInfo->cell_number,
+                        'phone_number' =>$contactInfo->phone_number,
+                        'city' =>$contactInfo->city,
+                        'country_id' =>$contactInfo->country_id,
+                        'address' =>$contactInfo->address
+                    )
+                );
+            $message = 'Record Updated Successfully';
             $heading = 'Contact Information';
-            return redirect('/contactinformation')->with($message, $heading);
+            return redirect('/contactinformation')->with($message, $heading,$dropdowns);
         }
     }
 

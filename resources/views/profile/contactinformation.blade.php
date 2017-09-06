@@ -14,17 +14,17 @@
                             {{ csrf_field() }}
 
                             @if(Auth::check())
-                            <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
+                                <input name="id" type="hidden" value="{{$Model->id}}">
                             @endif
 
-                            <div class="form-group{{ $errors->has('contact_number') ? ' has-error' : '' }}">
-                                <label for="contact_number" class="col-md-4 control-label">Contact Number</label>
+                            <div class="form-group{{ $errors->has('cell_number') ? ' has-error' : '' }}">
+                                <label for="cell_number" class="col-md-4 control-label">Cell Number</label>
 
                                 <div class="col-md-6">
-                                    <input id="contact_number" type="text" class="form-control" name="contact_number" value="{{ old('contact_number') }}" required autofocus>
-                                    @if ($errors->has('contact_number'))
+                                    <input id="cell_number" type="text" class="form-control" name="cell_number" value="{{ $Model->cell_number}}" required autofocus>
+                                    @if ($errors->has('cell_number'))
                                         <span class="help-block">
-                                        <strong>{{ $errors->first('contact_number') }}</strong>
+                                        <strong>{{ $errors->first('cell_number') }}</strong>
                                     </span>
                                     @endif
                                 </div>
@@ -35,7 +35,7 @@
                                 <label for="phone_number" class="col-md-4 control-label">Phone Number</label>
 
                                 <div class="col-md-6">
-                                    <input id="phone_number" type="text" class="form-control" name="phone_number" value="{{ old('phone_number') }}" required autofocus>
+                                    <input id="phone_number" type="text" class="form-control" name="phone_number" value="{{ $Model->phone_number }}" required autofocus>
 
                                     @if ($errors->has('phone_number'))
                                         <span class="help-block">
@@ -50,7 +50,7 @@
                                 <label for="city" class="col-md-4 control-label">City</label>
 
                                 <div class="col-md-6">
-                                    <input id="city" type="text" class="form-control" name="city" value="{{ old('city') }}" required autofocus>
+                                    <input id="city" type="text" class="form-control" name="city" value="{{ $Model->city}}" required autofocus>
 
                                     @if ($errors->has('city'))
                                         <span class="help-block">
@@ -67,8 +67,8 @@
                                     <select id="country_id" required name="country_id"
                                             class="form-control">
                                         <option value="">Select Country</option>
-                                        @foreach($countries as $key =>$value)
-                                            <option value="{{$key}}">{{$value}}</option>
+                                        @foreach($dropdowns->countries as $key =>$value)
+                                            <option value="{{$key}}" @if( $key== $Model->country_id ) selected @endif >{{$value}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -78,7 +78,7 @@
                                 <label for="address" class="col-md-4 control-label">Address</label>
 
                                 <div class="col-md-6">
-                                    <input id="address" type="text" class="form-control" name="city" value="{{ old('address') }}" required autofocus>
+                                    <input id="address" type="text" class="form-control" name="address" value="{{ $Model->address}}" required autofocus>
 
                                     @if ($errors->has('address'))
                                         <span class="help-block">

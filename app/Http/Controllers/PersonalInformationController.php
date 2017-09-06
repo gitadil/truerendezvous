@@ -22,6 +22,9 @@ class PersonalInformationController extends Controller
     {
 
         $personalInfo = PersonalInformation::where('user_id', Auth::user()->guid)->first();
+        if(empty($personalInfo))
+            $personalInfo=new PersonalInformation();
+
         $dropdowns    = $this->BindDropDowns();
         return        view('profile.personalinformation')->with('Model',$personalInfo)->with('dropdowns',$dropdowns);
     }
