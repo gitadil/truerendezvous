@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PersonalInformation extends Model
+class ProfessionalInformation extends Model
 {
     //
 
@@ -12,9 +12,9 @@ class PersonalInformation extends Model
 
     //Excluded Attributes
 
-    protected $hidden = [];
+    protected $hidden  = [];
 
     public $timestamps = null;
 
-    protected $table = 'personal_information';
+    protected $table   = 'professional_information';
 }
