@@ -10,17 +10,6 @@ use stdClass;
 
 class PersonalInformationController extends Controller
 {
-//    protected static $heading        = 'Personal Information';
-//    public static $gender    ;
-//    protected $marital_status ;
-//    protected $religion       ;
-//    protected $body_type      ;
-//    protected $skin_tone      ;
-//    protected $cast          ;
-//    protected $mother_tongue;
-//    protected $nationality;
-//    protected $height;
-
     public function __construct()
     {
          $this->middleware('auth');

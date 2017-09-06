@@ -15,16 +15,25 @@ class ContactInformationController extends Controller
         $this->middleware('auth');
     }
 
-    Public function create()
+    Public function create(Request $request)
     {
-        $countries    = Config::get('enums.nationality');
-        return view('profile.contactinformation',compact('countries'));
+        $contactInfo = new ContactInformation();
+        if(empty($request->id))
+        {
+            $contactInfo->id=0;
+        }
+        else
+        {
+            $contactInfo = ContactInformation::find($request->id);
+        }
+        $dropdowns= $this->BindDropDowns();
+
+        return view('profile.contactinformation')->with('Model',$contactInfo)->with('dropdowns',$dropdowns);
     }
 
     Public function store(Request $request)
     {
         $contactInfo = new ContactInformation();
-
         $contactInfo->cell_number         = (!empty($request->cell_number)) ? $request->cell_number: '';
         $contactInfo->phone_number               = (!empty($request->phone_number)) ? $request->phone_number : '';
         $contactInfo->city =                      (!empty($request->city)) ? $request->city: '';
@@ -32,10 +41,29 @@ class ContactInformationController extends Controller
         $contactInfo->address            = (!empty($request->address)) ? $request->address: '';
         $contactInfo->user_id           = (!empty($request->user_id)) ? $request->user_id : '';
 
-        $contactInfo->save();
-        $message = 'Record Added Successfully';
-        $heading = 'Contact Information';
-        return redirect('contactinformation')->with($message, $heading);
+        if(empty($request->id)) //Add
+        {
+            $contactInfo->save();
+            $message = 'Record Added Successfully';
+            $heading = 'Contact Information';
+            return redirect('/contactinformation')->with($message, $heading);
+        }
+        else //Update
+        {
+            $contactInfo = PersonalInformation::find($request->id);
+            $contactInfo->save();
+            $message = 'Record Added Successfully';
+            $heading = 'Contact Information';
+            return redirect('/contactinformation')->with($message, $heading);
+        }
+    }
+
+    private  function BindDropDowns()
+    {
+        $dropdowns=new  stdclass();
+        //DropDowns
+        $dropdowns->countries    = Config::get('enums.nationality');
+        return $dropdowns;
     }
 
 }
