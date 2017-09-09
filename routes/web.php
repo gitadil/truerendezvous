@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Auth::routes();
@@ -51,4 +51,6 @@ Route::post('/partnerinformation/store', 'PartnerInformationController@store');
 Route::get('/professionalinformation', 'ProfessionalInformationController@create');
 
 Route::post('/professionalinformation/store', 'ProfessionalInformationController@store');
+
+Route::get('/search', 'SearchController@index');
 
