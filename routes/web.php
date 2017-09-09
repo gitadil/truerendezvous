@@ -42,6 +42,10 @@ Route::get('/contactinformation', 'ContactInformationController@create');
 
 Route::post('/contactinformation/store', 'contactInformationController@store');
 
+Route::get('/partnerinformation', 'PartnerInformationController@create');
+
+Route::post('/partnerinformation/store', 'PartnerInformationController@store');
+
 
 Route::get('/professionalinformation', 'ProfessionalInformationController@create');
 
