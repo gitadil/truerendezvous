@@ -29,6 +29,13 @@ class ProfessionalInformationController extends Controller
 
     Public function store(Request $request)
     {
+
+        $this->validate($request,[
+
+            'designation'=>'required',
+            'organizaiton_name'=>'required'
+        ]);
+
         $document_type    = Config::get('enums.document_type.ProfessionalDocuments');
 
         $obj = new stdClass();

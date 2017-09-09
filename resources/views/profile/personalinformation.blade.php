@@ -155,7 +155,7 @@
                                     <select id="place_of_birth_id" required name="place_of_birth_id"
                                             class="form-control">
                                         <option value="">Select Birth Place</option>
-                                        @foreach($dropdowns->nationality as $key =>$value)
+                                        @foreach($dropdowns->countries as $key =>$value)
                                             <option value="{{$key}}" @if( $key== $Model->place_of_birth_id ) selected @endif>{{$value}}</option>
                                         @endforeach
                                     </select>
@@ -181,7 +181,7 @@
                                 <div class="col-md-6">
                                     <select id="nationality_id" required name="nationality_id" class="form-control">
                                         <option value="">Select Nationality</option>
-                                        @foreach($dropdowns->nationality as $key =>$value)
+                                        @foreach($dropdowns->countries as $key =>$value)
                                             <option value="{{$key}}" @if( $key== $Model->nationality_id ) selected @endif >{{$value}}</option>
                                         @endforeach
                                     </select>

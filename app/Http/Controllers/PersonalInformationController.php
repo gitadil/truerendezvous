@@ -3,13 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
 use App\PersonalInformation;
-use stdClass;
-use Faker\Provider\Uuid;
 use Illuminate\Support\Facades\Auth;
-
-
 
 class PersonalInformationController extends Controller
 {
@@ -20,12 +15,11 @@ class PersonalInformationController extends Controller
 
     Public function create()
     {
-
         $personalInfo = PersonalInformation::where('user_id', Auth::user()->guid)->first();
         if(empty($personalInfo))
             $personalInfo=new PersonalInformation();
 
-        $dropdowns    = $this->BindDropDowns();
+        $dropdowns    = self::BindDropDowns();
         return        view('profile.personalinformation')->with('Model',$personalInfo)->with('dropdowns',$dropdowns);
     }
 
@@ -78,21 +72,4 @@ class PersonalInformationController extends Controller
         }
 
     }
-    private  function BindDropDowns()
-    {
-        $dropdowns = new  stdclass();
-
-        //DropDowns
-        $dropdowns->gender         = Config::get('enums.gender');
-        $dropdowns->marital_status = Config::get('enums.marital_status');
-        $dropdowns->religion       = Config::get('enums.religion');
-        $dropdowns->body_type      = Config::get('enums.body_type');
-        $dropdowns->skin_tone      = Config::get('enums.skin_tone');
-        $dropdowns->cast           = Config::get('enums.cast');
-        $dropdowns->mother_tongue  = Config::get('enums.mother_tongue');
-        $dropdowns->nationality    = Config::get('enums.nationality');
-        $dropdowns->height         = Config::get('enums.height');
-        return $dropdowns;
-    }
-
 }
