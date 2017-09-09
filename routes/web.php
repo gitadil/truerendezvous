@@ -32,14 +32,15 @@ Route::get('/personalinformation', 'PersonalInformationController@create');
 
 Route::post('/personalinformation/store', 'PersonalInformationController@store');
 
-
-Route::get('/educationinformation', 'EducationInformationController@create');
+Route::get('/educationinformation', 'EducationInformationController@index');
+Route::get('/educationinformation/add', 'EducationInformationController@create');
+//Route::get('/educationinformation/edit', 'EducationInformationController@create');
+Route::get('/educationinformation/edit/{id}', 'EducationInformationController@create');
 
 Route::post('/educationinformation/store', 'EducationInformationController@store');
 
 
 Route::get('/contactinformation', 'ContactInformationController@create');
-
 Route::post('/contactinformation/store', 'contactInformationController@store');
 
 Route::get('/partnerinformation', 'PartnerInformationController@create');

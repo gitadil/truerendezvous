@@ -12,6 +12,17 @@
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" enctype="multipart/form-data" action="/professionalinformation/store">
                             {{ csrf_field() }}
+                            @if($errors->all())
+                            <div class="form-group">
+
+                                <div class="alert alert-danger">
+
+                                    @foreach($errors->all() as $error)
+                                        <li>{{$error}}</li>
+                                    @endforeach
+                                </div>
+                            </div>
+                            @endif
 
                             @if(Auth::check())
                                 <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
@@ -21,7 +32,7 @@
                                 <label for="designation" class="col-md-4 control-label">Designation</label>
 
                                 <div class="col-md-6">
-                                    <input id="designation" type="text" class="form-control" name="designation" value="{{ old('designation') }}" required autofocus>
+                                    <input id="designation" type="text" class="form-control" name="designation" value="{{ old('designation') }}" autofocus>
 
                                     @if ($errors->has('designation'))
                                         <span class="help-block">
@@ -36,7 +47,7 @@
                                 <label for="organizaiton_name" class="col-md-4 control-label">Organizaiton Name</label>
 
                                 <div class="col-md-6">
-                                    <input id="organizaiton_name" type="text" class="form-control" name="organizaiton_name" value="{{ old('organizaiton_name') }}" required autofocus>
+                                    <input id="organizaiton_name" type="text" class="form-control" name="organizaiton_name" value="{{ old('organizaiton_name') }}"  autofocus>
 
                                     @if ($errors->has('organizaiton_name'))
                                         <span class="help-block">
@@ -49,7 +60,7 @@
                                 <label for="country_id" class="col-md-4 control-label">Country</label>
 
                                 <div class="col-md-6">
-                                    <select id="country_id" required name="country_id" class="form-control">
+                                    <select id="country_id"  name="country_id" class="form-control">
                                         <option value="">Select Nationality</option>
                                         @foreach($nationality as $key =>$value)
                                             <option value="{{$key}}">{{$value}}</option>
@@ -62,7 +73,7 @@
                                 <label for="path" class="col-md-4 control-label">Document</label>
 
                                 <div class="col-md-6">
-                                    <input id="path" type="file" class="form-control" name="path" value="{{ old('path') }}" required autofocus>
+                                    <input id="path" type="file" class="form-control" name="path" value="{{ old('path') }}"  autofocus>
 
                                     @if ($errors->has('path'))
                                         <span class="help-block">
