@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\ContactInformation;
+use App\Models\ContactInformation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Config;
-use stdClass;
-use Faker\Provider\Uuid;
 use Illuminate\Support\Facades\Auth;
 
 class ContactInformationController extends Controller
@@ -25,8 +22,8 @@ class ContactInformationController extends Controller
         {
             $contactInfo=new ContactInformation();
         }
-        $dropdowns    = $this->BindDropDowns();
-        return        view('profile.contactinformation')->with('Model',$contactInfo)->with('dropdowns',$dropdowns);
+        $dropdowns    = self::BindDropDowns();
+        return        view('profile.contact.contactinformation')->with('Model',$contactInfo)->with('dropdowns',$dropdowns);
     }
 
     Public function store(Request $request)
@@ -38,14 +35,14 @@ class ContactInformationController extends Controller
         $contactInfo->country_id       = (!empty($request->country_id)) ? $request->country_id: '';
         $contactInfo->address            = (!empty($request->address)) ? $request->address: '';
         $contactInfo->user_id           = (!empty($request->user_id)) ? $request->user_id : '';
-        $dropdowns = $this->BindDropDowns();
+        $dropdowns = self::BindDropDowns();
         if(empty($request->id)) //Add
         {
             $contactInfo->user_id = Auth::user()->guid;
             $contactInfo->save();
             $message = 'Record Added Successfully';
             $heading = 'Contact Information';
-            return redirect('/contactinformation')->with($message, $heading);
+            return redirect('/contact')->with($message, $heading);
         }
         else //Update
         {
@@ -59,16 +56,8 @@ class ContactInformationController extends Controller
                 );
             $message = 'Record Updated Successfully';
             $heading = 'Contact Information';
-            return redirect('/contactinformation')->with($message, $heading,$dropdowns);
+            return redirect('/contact')->with($message, $heading,$dropdowns);
         }
-    }
-
-    private  function BindDropDowns()
-    {
-        $dropdowns=new  stdclass();
-        //DropDowns
-        $dropdowns->countries    = Config::get('enums.nationality');
-        return $dropdowns;
     }
 
 }

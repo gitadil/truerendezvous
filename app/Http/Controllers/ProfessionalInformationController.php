@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
-use App\ProfessionalInformation;
+use App\Models\ProfessionalInformation;
 use Faker\Provider\Uuid;
 use App\Http\Controllers\DocumentController AS DOCCtrl;
 use Illuminate\Support\Facades\Auth;
@@ -21,10 +21,10 @@ class ProfessionalInformationController extends Controller
 
     Public function create()
     {
-        $heading        = 'Professional Information';
-        $nationality    = Config::get('enums.nationality');
+        $heading    = 'Professional Information';
+        $dropdowns  = self::BindDropDowns();
 
-        return view('profile.professionalinformation',compact('heading','nationality'));
+        return view('profile.profession.professionalinformation',compact('heading','dropdowns'));
     }
 
     Public function store(Request $request)

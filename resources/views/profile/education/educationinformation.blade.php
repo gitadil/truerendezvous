@@ -8,7 +8,7 @@
                     <div class="panel-heading" style="height: 50px;">
                         <div style="float:left;">{{$heading}}</div>
                         <div style="float:right;">
-                            <a href="/educationinformation/add" class="collapse-link">
+                            <a href="/education/add" class="collapse-link">
                                 <button type="button" class="btn btn-success">Add</button>
                             </a>
                         </div>
@@ -39,7 +39,7 @@
                                         <td>{{$education->passing_year}}</td>
                                         <td>{{$education->institute}}</td>
                                         <td>
-                                            <a href="/educationinformation/edit/{{$education->id}}" class=".btn .btn-app">
+                                            <a href="/education/edit/{{$education->id}}" class=".btn .btn-app">
                                                 <button type="button" class="btn btn-warning">
                                                     <i class="fa fa-edit">Edit</i>
                                                 </button>

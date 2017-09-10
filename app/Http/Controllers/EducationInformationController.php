@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\EducationInformation;
+use App\Models\EducationInformation;
 use Faker\Provider\Uuid;
 use App\Http\Controllers\DocumentController AS DOCCtrl;
 use Illuminate\Support\Facades\Auth;
@@ -56,7 +56,7 @@ class EducationInformationController extends Controller
         $obj->user_id       = Auth::user()->guid;
 
         if ($file = $request->file('path')) {
-            $name = $file->getClientOriginalName();
+            $name = microtime().'-'.$file->getClientOriginalName();
             $file->move('images', $name);
             $obj->path = $name;
         }
@@ -79,7 +79,7 @@ class EducationInformationController extends Controller
             $educationInfo->save();
             $message = 'Record Added Successfully';
             $heading = 'Education Information';
-            return redirect('/educationinformation')->with($message, $heading,$dropdowns);
+            return redirect('/education')->with($message, $heading,$dropdowns);
         }
         else //Update
         {
@@ -93,7 +93,7 @@ class EducationInformationController extends Controller
                 );
             $message = 'Record Updated Successfully';
             $heading = 'Education Information';
-            return redirect('/educationinformation')->with($message, $heading,$dropdowns);
+            return redirect('/education')->with($message, $heading,$dropdowns);
         }
     }
 

@@ -10,7 +10,7 @@
                         <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
                     @endif
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" action="/personalinformation/store">
+                        <form class="form-horizontal" method="POST" action="/personal/store">
                             {{ csrf_field() }}
 
                             @if(Auth::check())

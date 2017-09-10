@@ -28,29 +28,29 @@ Route::get('/auth/confirm', [
     'uses' => 'Auth\RegisterController@confirm'
 ]);
 
-Route::get('/personalinformation', 'PersonalInformationController@create');
+Route::get('/personal', 'PersonalInformationController@create');
 
-Route::post('/personalinformation/store', 'PersonalInformationController@store');
+Route::post('/personal/store', 'PersonalInformationController@store');
 
-Route::get('/educationinformation', 'EducationInformationController@index');
-Route::get('/educationinformation/add', 'EducationInformationController@create');
-//Route::get('/educationinformation/edit', 'EducationInformationController@create');
-Route::get('/educationinformation/edit/{id}', 'EducationInformationController@create');
+Route::get('/education', 'EducationInformationController@index');
+Route::get('/education/add', 'EducationInformationController@create');
+//Route::get('/education/edit', 'EducationInformationController@create');
+Route::get('/education/edit/{id}', 'EducationInformationController@create');
 
-Route::post('/educationinformation/store', 'EducationInformationController@store');
-
-
-Route::get('/contactinformation', 'ContactInformationController@create');
-Route::post('/contactinformation/store', 'contactInformationController@store');
-
-Route::get('/partnerinformation', 'PartnerInformationController@create');
-
-Route::post('/partnerinformation/store', 'PartnerInformationController@store');
+Route::post('/education/store', 'EducationInformationController@store');
 
 
-Route::get('/professionalinformation', 'ProfessionalInformationController@create');
+Route::get('/contact', 'ContactInformationController@create');
+Route::post('/contact/store', 'contactInformationController@store');
 
-Route::post('/professionalinformation/store', 'ProfessionalInformationController@store');
+Route::get('/partner', 'PartnerInformationController@create');
+
+Route::post('/partner/store', 'PartnerInformationController@store');
+
+
+Route::get('/profession', 'ProfessionalInformationController@create');
+
+Route::post('/profession/store', 'ProfessionalInformationController@store');
 
 Route::get('/search', 'SearchController@index');
 

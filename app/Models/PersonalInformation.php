@@ -1,15 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Document extends Model
+class PersonalInformation extends Model
 {
     //
 
-    protected $guarded = ['user_id','document_guid'];
-
+    protected $guarded = ['user_id'];
 
     //Excluded Attributes
 
@@ -17,5 +16,5 @@ class Document extends Model
 
     public $timestamps = null;
 
-    protected $table = 'documents';
+    protected $table = 'personal_information';
 }

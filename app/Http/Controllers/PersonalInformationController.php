@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\PersonalInformation;
+use App\Models\PersonalInformation;
 use Illuminate\Support\Facades\Auth;
 
 class PersonalInformationController extends Controller
@@ -47,7 +47,7 @@ class PersonalInformationController extends Controller
             $personalInfo->save();
             $message = 'Record Added Successfully';
             $heading = 'Profile Information';
-            return redirect('/personalinformation')->with($message, $heading,$dropdowns);
+            return redirect('/personal')->with($message, $heading,$dropdowns);
         }
         else //Update
         {
@@ -68,7 +68,7 @@ class PersonalInformationController extends Controller
                 );
             $message = 'Record Updated Successfully';
             $heading = 'Profile Information';
-            return redirect('/personalinformation')->with($message, $heading,$dropdowns);
+            return redirect('/personal')->with($message, $heading,$dropdowns);
         }
 
     }
