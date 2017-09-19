@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="layout">
+    <header>
+        <div class="container">
+            <div class="login-register">
+                <div class="box-log-reg">
+                    <ul class="list-inline">
+                        <li><a href="#" data-toggle="modal" data-target="#LoginModal"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
+                        <span>/</span>
+                        <li><a href="#" data-toggle="modal" data-target="#RegisterModal">Register </a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="logo ">
+                <img src="https://19g8e3xdzsi8lh0i-zippykid.netdna-ssl.com/wp-content/themes/meeting-room-progression/images/logo.png" alt="Meeting Room" class="progression-studios-default-logo	">
+            </div>
+            <div class="navigation ">
+                <nav class="navbar navbar-inverse">
+                    <div class="container-fluid">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#"><img src="https://19g8e3xdzsi8lh0i-zippykid.netdna-ssl.com/wp-content/themes/meeting-room-progression/images/logo.png" alt="Meeting Room" class="progression-studios-default-logo	"></a>
+                        </div>
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="#">Page 1</a></li>
+                                <li><a href="#">Page 2</a></li>
+                                <li><a href="#">Page 3</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="slider">
+        <div class="container">
+            <div class="form-box">
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <!-- content goes here -->
+                        <div class="modal-login">
+                            <h3 class="modal-title">Educational Information</h3>
+                            <form>
+                                <div class="row">
+
+                                    <!-- Educational INFO  -->
+
+                                    <div class="col-md-12" >
+                                        <div id="field">
+                                            <div id="field0">
+                                                <!-- Text input-->
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <input id="education_title" name="education_title" type="text" placeholder="Title" class="form-control input-md">
+                                                                                                               </div>
+                                                </div>
+                                                <!-- Text input-->
+
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <input id="education_institute" name="education_institute" type="text" placeholder="Institute" class="form-control input-md">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <input id="education_location" name="education_location" type="text" placeholder="Location" class="form-control input-md">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label for="education_from_month">From</label>
+                                                        <select class="form-control" id="education_from_month" name="education_from_month">
+                                                            <option>Month</option>
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                        </select>
+                                                        <select class="form-control" id="education_from_year" name="education_from_year">
+                                                            <option>Year</option>
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="education_to_month">To</label>
+                                                    <div class="form-group">
+                                                        <select class="form-control" id="education_to_month" name="education_to_month">
+                                                            <option>Month</option>
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                        </select>
+                                                        <select class="form-control" id="education_to_year" name="education_to_year">
+                                                            <option>Year</option>
+                                                            <option>1</option>
+                                                            <option>2</option>
+                                                            <option>3</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <textarea  class="form-control" name="educaional_summary" id="educaional_summary" placeholder="About your education"></textarea>
+                                                    </div>
+                                                </div>
+                                                <!-- File Button -->
+                                                <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <label class="education_media">Media</label>
+                                                        <input type="file" id="education_media" name="education_media" class="input-file" accept=".doc,.pdf,.docx,.jpg,.jpeg,.png">
+                                                        <div id="action_jsondisplay"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Button -->
+                                        <div class="form-group">
+                                            <div class="col-md-4">
+                                                <button id="add-more" name="add-more" class="btn btn-primary">Add More</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!--  Educational INFO-->
+
+                                <div class="sub-btn text-center">
+                                    <input type="button" class="btn custom-btn-primary custom-btn" value="Next">
+                                </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                        </form>
+
+
+                    </div>
+
+                <div class="col-md-6">
+                    <div class="popup-banner">
+                        <img class="img-responsive" src="images/loginpopup.jpg">
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="how-it-work">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-4">
+            <h1 class="hd-1">How it Works</h1>
+            <p class="para-1">Get started on true rendezvous today in 3 simple steps:</p>
+            <ul class="howitwork-list">
+                <li>
+                    <div class="howitwork-icon"><i class="fa fa-vcard-o"></i></div>
+                    <div class="howitwork-details">
+                        <h2 class="hd-2">Create A Profile</h2>
+                        <p>Create a personalized profile, add photos and describe your ideal partner.</p>
+                    </div>
+
+                </li>
+                <li>
+                    <div class="howitwork-icon"><i class="fa fa-search"></i></div>
+                    <div class="howitwork-details">
+                        <h2 class="hd-2">Browse Members</h2>
+                        <p>Find members based on location, very special interests and lifestyle preferences.</p>
+                    </div>
+
+                </li>
+                <li>
+                    <div class="howitwork-icon"><i class="fa fa-comments"></i></div>
+                    <div class="howitwork-details">
+                        <h2 class="hd-2">Start Communicating</h2>
+                        <p>Show interest in the members you like and let the journey begin.</p>
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <div class="how-it-work-photo">
+                <img src="https://meeting-room.progressionstudios.com/wp-content/uploads/2017/06/why-us-1.png" width="100%">
+            </div>
+        </div>
+</section>
+<section class="testiminials">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 class="hd-1">They Found Love</h1>
+                <div class="content">
+                    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                        </ol>
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="thumbnail adjust1">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <img class="media-object img-rounded img-responsive" src="http://placehold.it/100">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="caption">
+                                                    <p class="text-info lead adjust2">I can't wait to test this out.</p>
+                                                    <p>This is a testimonial window. Feedback of user can be displayed here.</p>
+                                                    <blockquote class="adjust3">
+                                                        <p>- Abhijit Goswami</p>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="thumbnail adjust1">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <img class="media-object img-rounded img-responsive" src="http://placehold.it/100">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="caption">
+                                                    <p class="text-info lead adjust2">I can't wait to test this out.</p>
+                                                    <p>This is a testimonial window. Feedback of user can be displayed here.</p>
+                                                    <blockquote class="adjust3">
+                                                        <p>- Abhijit Goswami</p>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <div class="thumbnail adjust1">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <img class="media-object img-rounded img-responsive" src="http://placehold.it/100">
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="caption">
+                                                    <p class="text-info lead adjust2">I can't wait to test this out.</p>
+                                                    <p>This is a testimonial window. Feedback of user can be displayed here.</p>
+                                                    <blockquote class="adjust3">
+                                                        <p>- Abhijit Goswami</p>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Controls -->
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h1 class="hd-1">Video Presentation</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="what-we-do">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="wwd-1">
+                    <h2 class="hd-3">PERSONAL <br/>VIDEO CHATS</h2>
+                    <p class="txt-1">Live video chat allows you to connect with your would-be partner much quicker.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="wwd-2">
+                    <h2 class="hd-3">100% FULLY
+                        <br/>SECURED</h2>
+                    <p class="txt-1">Live video chat allows you to connect with your would-be partner much quicker.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="wwd-3">
+                    <h2 class="hd-3">PERSONAL <br/>VIDEO CHATS</h2>
+                    <p class="txt-1">Live video chat allows you to connect with your would-be partner much quicker.</p>
+                </div></div>
+        </div>
+    </div>
+</section>
+<footer>
+    <div class="row">
+        <div class="col-md-12 col-sm-12">
+
+            <div class="language">
+                <div class="container">
+                    <div class="col-md-6">
+                    </div>
+                    <div class="col-md-6">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6 footerleft ">
+                <h6 class="heading7">About True Rendezvous</h6>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
+                <p><i class="fa fa-map-pin"></i>Address</p>
+                <p><i class="fa fa-phone"></i> Phone </p>
+                <p><i class="fa fa-envelope"></i> E-mail</p>
+
+            </div>
+
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Most Active Users</h6>
+                <div class="post">
+                    <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+                    <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+                    <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-6 paddingtop-bottom">
+                <h6 class="heading7">Useful Links</h6>
+                <ul class="footer-ul">
+                    <li><a href="#"> Find Love</a></li>
+                    <li><a href="#"> Privacy Policy</a></li>
+                    <li><a href="#"> Terms & Conditions</a></li>
+                    <li><a href="#"> Match Profile</a></li>
+                    <li><a href="#"> Why True Rendezvous</a></li>
+                    <li><a href="#"> Love Blog</a></li>
+                    <li><a href="#"> True Stories</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 paddingtop-bottom">
+                <h5 class="heading7">Trusted by Millions</h5>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--footer start from here-->
+
+<div class="copyright">
+    <div class="container">
+        <div class="col-md-6">
+            <p>© 2016 - All Rights with offsidetech</p>
+        </div>
+        <div class="col-md-6">
+            <ul class="bottom_ul">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Faq's</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Site Map</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
