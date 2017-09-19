@@ -34,9 +34,11 @@
                             <!-- Authentication Links -->
                             <ul class="list-inline">
                                 @if (Auth::guest())
-                                <li><a href="#" data-toggle="modal" data-target="#LoginModal"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
+                                <li><a href="{{ route('login') }}" ><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
+                                {{--data-toggle="modal" data-target="#LoginModal"--}}
                                 <span>/</span>
-                                <li><a href="#" data-toggle="modal" data-target="#RegisterModal">Register </a></li>
+                                <li><a href="{{ route('register') }}" >Register </a></li>
+                                    {{--data-toggle="modal" data-target="#RegisterModal"--}}
                                 @else
                                     <li class="dropdown">
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -236,10 +238,12 @@
                                 </div>
                                 <div class="collapse navbar-collapse" id="myNavbar">
                                     <ul class="nav navbar-nav">
-                                        <li class="active"><a href="#">Home</a></li>
-                                        <li><a href="#">Page 1</a></li>
-                                        <li><a href="#">Page 2</a></li>
-                                        <li><a href="#">Page 3</a></li>
+                                        <li class="active"><a href="#">Find Love</a></li>
+                                        <li><a href="#">Match Profile</a></li>
+                                        <li><a href="#">Why Us?</a></li>
+                                        <li><a href="#">Love Blog</a></li>
+                                        <li><a href="#">True Stories</a></li>
+                                        <li><a href="#">Contact</a></li>
                                     </ul>
 
                                 </div>
@@ -247,8 +251,9 @@
                         </nav>
                     </div>
                 </div>
+                @yield('register-content');
             </header>
-                    @yield('content')
+                @yield('content')
         </div>
     </div>
 
