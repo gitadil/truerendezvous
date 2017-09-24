@@ -28,7 +28,15 @@ class Controller extends BaseController
         $dropdowns->mother_tongue  = Config::get('enums.mother_tongue');
         $dropdowns->countries      = Config::get('enums.countries');
         $dropdowns->height         = Config::get('enums.height');
+        $dropdowns->age            = self::fillage();
         
         return $dropdowns;
+    }
+    private static function  fillage()
+    {
+        $age=array();
+        for($i=14;$i<=75;$i++)
+           $age[$i]=$i;
+        return $age;
     }
 }

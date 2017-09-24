@@ -25,8 +25,14 @@ class SearchController extends Controller
         $lookingfor=$request->get("lookingfor");
         $from=$request->get("from");
         $to=$request->get("to");
-        return  view('search')->with('Model',$users->GetUser());
+        $city=$request->get("city");
+        $country=$request->get("country");
+        $dropdowns    = self::BindDropDowns();
+
+        return  view('search')->with('Model',$users->SearchUser($lookingfor,$from,$to,$country,$city))->with('dropdowns',$dropdowns);
     }
+
+
 
 
 }
