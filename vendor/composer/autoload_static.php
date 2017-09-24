@@ -15,6 +15,7 @@ class ComposerStaticInit383bb42848638faff8ceffad7337a296
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        'd4de07f95dbbd0de75eca852f8957f45' => __DIR__ . '/../..' . '/app/Http/Utility.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -233,13 +234,6 @@ class ComposerStaticInit383bb42848638faff8ceffad7337a296
     );
 
     public static $prefixesPsr0 = array (
-        'W' => 
-        array (
-            'Webpatser\\Uuid' => 
-            array (
-                0 => __DIR__ . '/..' . '/webpatser/laravel-uuid/src',
-            ),
-        ),
         'P' => 
         array (
             'Prophecy\\' => 
@@ -285,21 +279,34 @@ class ComposerStaticInit383bb42848638faff8ceffad7337a296
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\ContactInformationController' => __DIR__ . '/../..' . '/app/Http/Controllers/ContactInformationController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DocumentController' => __DIR__ . '/../..' . '/app/Http/Controllers/DocumentController.php',
+        'App\\Http\\Controllers\\EducationInformationController' => __DIR__ . '/../..' . '/app/Http/Controllers/EducationInformationController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
+        'App\\Http\\Controllers\\PartnerInformationController' => __DIR__ . '/../..' . '/app/Http/Controllers/PartnerInformationController.php',
         'App\\Http\\Controllers\\PersonalInformationController' => __DIR__ . '/../..' . '/app/Http/Controllers/PersonalInformationController.php',
+        'App\\Http\\Controllers\\ProfessionalInformationController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfessionalInformationController.php',
+        'App\\Http\\Controllers\\SearchController' => __DIR__ . '/../..' . '/app/Http/Controllers/SearchController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
-        'App\\PersonalInformation' => __DIR__ . '/../..' . '/app/PersonalInformation.php',
+        'App\\Libraries\\ManagerBase' => __DIR__ . '/../..' . '/app/Libraries/ManagerBase.php',
+        'App\\Libraries\\ManagerUser' => __DIR__ . '/../..' . '/app/Libraries/ManagerUser.php',
+        'App\\Models\\ContactInformation' => __DIR__ . '/../..' . '/app/Models/ContactInformation.php',
+        'App\\Models\\Document' => __DIR__ . '/../..' . '/app/Models/Document.php',
+        'App\\Models\\EducationInformation' => __DIR__ . '/../..' . '/app/Models/EducationInformation.php',
+        'App\\Models\\PartnerInformation' => __DIR__ . '/../..' . '/app/Models/PartnerInformation.php',
+        'App\\Models\\PersonalInformation' => __DIR__ . '/../..' . '/app/Models/PersonalInformation.php',
+        'App\\Models\\ProfessionalInformation' => __DIR__ . '/../..' . '/app/Models/ProfessionalInformation.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
-        'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'App\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
@@ -3207,8 +3214,6 @@ class ComposerStaticInit383bb42848638faff8ceffad7337a296
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Processor' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Processor.php',
         'TijsVerkoyen\\CssToInlineStyles\\Css\\Rule\\Rule' => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src/Css/Rule/Rule.php',
         'Webmozart\\Assert\\Assert' => __DIR__ . '/..' . '/webmozart/assert/src/Assert.php',
-        'Webpatser\\Uuid\\Uuid' => __DIR__ . '/..' . '/webpatser/laravel-uuid/src/Webpatser/Uuid/Uuid.php',
-        'Webpatser\\Uuid\\UuidFacade' => __DIR__ . '/..' . '/webpatser/laravel-uuid/src/Webpatser/Uuid/UuidFacade.php',
         'XdgBaseDir\\Xdg' => __DIR__ . '/..' . '/dnoegel/php-xdg-base-dir/src/Xdg.php',
         'phpDocumentor\\Reflection\\DocBlock' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlock.php',
         'phpDocumentor\\Reflection\\DocBlockFactory' => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src/DocBlockFactory.php',
