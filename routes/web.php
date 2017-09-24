@@ -30,6 +30,7 @@ Route::get('/auth/confirm', [
 
 Route::get('/personal', 'PersonalInformationController@create');
 
+
 Route::post('/personal/store', 'PersonalInformationController@store');
 
 Route::get('/education', 'EducationInformationController@index');
@@ -53,4 +54,6 @@ Route::get('/profession', 'ProfessionalInformationController@create');
 Route::post('/profession/store', 'ProfessionalInformationController@store');
 
 Route::get('/search', 'SearchController@index');
+
+Route::get('/admin', 'PersonalInformationController@admin');
 

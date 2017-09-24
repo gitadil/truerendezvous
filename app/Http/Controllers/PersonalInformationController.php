@@ -72,4 +72,10 @@ class PersonalInformationController extends Controller
         }
 
     }
+
+    Public function admin()
+    {
+
+        return  view('admin.index');
+    }
 }
