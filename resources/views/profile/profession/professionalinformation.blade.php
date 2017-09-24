@@ -1,102 +1,116 @@
 @extends('layouts.app')
 
-@section('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">{{$heading}}</div>
-                    @if(Session::has('message'))
-                        <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
-                    @endif
-                    <div class="panel-body">
-                        <form class="form-horizontal" method="POST" enctype="multipart/form-data"
-                              action="/profession/store">
-                            {{ csrf_field() }}
-                            @if($errors->all())
-                                <div class="form-group">
+@section('register-content')
+    <div class="slider">
+        <div class="container">
+            <div class="row">
+                <div class="board">
 
-                                    <div class="alert alert-danger">
+                    @include('includes.profile_nav')
 
-                                        @foreach($errors->all() as $error)
-                                            <li>{{$error}}</li>
-                                        @endforeach
-                                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane fade in active" id="home">
+
+                            <div class="form-box-login">
+                                <div class="col-md-4">
+                                    <h1 class="login-hd">Professional<br /> <span>Info</span></h1>
                                 </div>
-                            @endif
+                                <div class="col-md-8 wt-bg">
+                                    <div class="col-md-12">
+                                        <!-- content goes here -->
+                                        <div class="modal-login">
+                                            <h3 class="modal-title-1">PROFESSIONAL INFORMATION</h3>
 
-                            @if(Auth::check())
-                                <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
-                            @endif
+                                            @if(Session::has('message'))
+                                                <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+                                            @endif
+                                            <form method="POST" enctype="multipart/form-data" action="/profession/store">
+                                                {{ csrf_field() }}
+                                                @if($errors->all())
+                                                    <div class="form-group">
 
-                            <div class="form-group{{ $errors->has('designation') ? ' has-error' : '' }}">
-                                <label for="designation" class="col-md-4 control-label">Designation</label>
+                                                        <div class="alert alert-danger">
 
-                                <div class="col-md-6">
-                                    <input id="designation" type="text" class="form-control" name="designation"
-                                           value="{{ old('designation') }}" autofocus>
+                                                            @foreach($errors->all() as $error)
+                                                                <li>{{$error}}</li>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                @endif
 
-                                    @if ($errors->has('designation'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('designation') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
+                                                @if(Auth::check())
+                                                    <input name="user_id" type="hidden" value="{{Auth::user()->id}}">
+                                                @endif
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group {{ $errors->has('designation') ? ' has-error' : '' }}">
+                                                            <label for="designation" class="control-label">Designation</label>
+                                                            <input id="designation" type="text" class="form-control" name="designation"
+                                                                   value="{{ old('designation') }}" autofocus placeholder="Designation">
 
+                                                            @if ($errors->has('designation'))
+                                                                <span class="help-block">
+                                                                    <strong>{{ $errors->first('designation') }}</strong>
+                                                                </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group {{ $errors->has('organizaiton_name') ? ' has-error' : '' }}">
+                                                            <label for="organizaiton_name" class="control-label">Organizaiton</label>
+                                                            <input id="organizaiton_name" type="text" class="form-control"
+                                                                   name="organizaiton_name" value="{{ old('organizaiton_name') }}" autofocus placeholder="Organization">
 
-                            <div class="form-group{{ $errors->has('organizaiton_name') ? ' has-error' : '' }}">
-                                <label for="organizaiton_name" class="col-md-4 control-label">Organizaiton Name</label>
+                                                            @if ($errors->has('organizaiton_name'))
+                                                                <span class="help-block">
+                                                                    <strong>{{ $errors->first('organizaiton_name') }}</strong>
+                                                                </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group {{ $errors->has('country_id') ? ' has-error' : '' }}">
+                                                            <label for="country_id" class="control-label">Country</label>
+                                                            <select id="country_id" name="country_id" class="form-control">
+                                                                <option value="">Select Country</option>
+                                                                @foreach($dropdowns->countries as $key =>$value)
+                                                                    <option value="{{$key}}">{{$value}}</option>
+                                                                @endforeach
+                                                            </select>
 
-                                <div class="col-md-6">
-                                    <input id="organizaiton_name" type="text" class="form-control"
-                                           name="organizaiton_name" value="{{ old('organizaiton_name') }}" autofocus>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="form-group {{ $errors->has('path') ? ' has-error' : '' }}">
+                                                            <label for="address" class="control-label">Document</label>
+                                                            <input id="path" type="file" class="form-control" name="path"
+                                                                   value="{{ old('path') }}" autofocus>
 
-                                    @if ($errors->has('organizaiton_name'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('organizaiton_name') }}</strong>
-                                    </span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="country_id" class="col-md-4 control-label">Country</label>
-
-                                <div class="col-md-6">
-                                    <select id="country_id" name="country_id" class="form-control">
-                                        <option value="">Select Nationality</option>
-                                        @foreach($dropdowns->countries as $key =>$value)
-                                            <option value="{{$key}}">{{$value}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('path') ? ' has-error' : '' }}">
-                                <label for="path" class="col-md-4 control-label">Document</label>
-
-                                <div class="col-md-6">
-                                    <input id="path" type="file" class="form-control" name="path"
-                                           value="{{ old('path') }}" autofocus>
-
-                                    @if ($errors->has('path'))
-                                        <span class="help-block">
+                                                            @if ($errors->has('path'))
+                                                                <span class="help-block">
                                         <strong>{{ $errors->first('path') }}</strong>
                                     </span>
-                                    @endif
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <div class="form-group">
+                                                            <button type="submit" class="btn custom-btn-primary custom-btn">
+                                                                Add
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="clearfix"> </div>
+                                    </div>
+                                    <div class="clearfix"> </div>
                                 </div>
                             </div>
-
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Register
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>

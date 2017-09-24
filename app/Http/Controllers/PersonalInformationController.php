@@ -20,7 +20,7 @@ class PersonalInformationController extends Controller
             $personalInfo=new PersonalInformation();
 
         $dropdowns    = self::BindDropDowns();
-        return        view('profile.personalinformation')->with('Model',$personalInfo)->with('dropdowns',$dropdowns);
+        return        view('profile.personal.personalinformation')->with('Model',$personalInfo)->with('dropdowns',$dropdowns);
     }
 
     Public function store(Request $request)

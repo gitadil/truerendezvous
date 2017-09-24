@@ -51,7 +51,7 @@
                                             <input id="phone_no" type="text" class="form-control" name="phone_no" value="{{ old('phone_no') }}" placeholder="Phone Number" required autofocus>
                                             @if ($errors->has('phone_no'))
                                                 <span class="help-block">
-                                                    <strong>{{ $errors->first('last_name') }}</strong>
+                                                    <strong>{{ $errors->first('phone_no') }}</strong>
                                                 </span>
                                             @endif
 
