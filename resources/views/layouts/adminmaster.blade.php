@@ -123,7 +123,7 @@
                 <ul id="sidebarnav">
                     <li><a class="waves-effect waves-dark" href="/admin" aria-expanded="false"><i
                                     class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a></li>
-                    <li><a class="waves-effect waves-dark" href="admin/users" aria-expanded="false"><i
+                    <li><a class="waves-effect waves-dark" href="/admin/users" aria-expanded="false"><i
                                     class="mdi mdi-account-check"></i><span class="hide-menu">Users</span></a></li>
                     {{--<li><a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i
                                     class="mdi mdi-table"></i><span class="hide-menu">Table</span></a></li>
