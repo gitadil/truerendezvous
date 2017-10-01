@@ -1,324 +1,255 @@
 @extends('layouts.adminmaster')
 
 @section('content')
-    <div class="slider">
-        <div class="custom-shape">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
-                <path class="shape-fill" d="M0,6V0h1000v100L0,6z"></path>
-            </svg>
+        <!-- ============================================================== -->
+<!-- Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<div class="row page-titles">
+    <div class="col-md-5 align-self-center">
+        <h3 class="text-themecolor">Dashboard</h3>
+    </div>
+    <div class="col-md-7 align-self-center">
+        <a href="https://wrappixel.com/templates/adminpro"
+           class="btn waves-effect waves-light btn-danger pull-right hidden-sm-down"> Upgrade to Pro</a>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Bread crumb and right sidebar toggle -->
+<!-- ============================================================== -->
+<!-- ============================================================== -->
+<!-- Sales overview chart -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-lg-9 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <h3 class="card-title m-b-5"><span class="lstick"></span>Sales Overview </h3>
+                    </div>
+                    <div class="ml-auto">
+                        <select class="custom-select b-0">
+                            <option selected="">January 2017</option>
+                            <option value="1">February 2017</option>
+                            <option value="2">March 2017</option>
+                            <option value="3">April 2017</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="sales-overview2" class="p-relative" style="height:360px;"></div>
+            </div>
         </div>
-        <div class="container">
-            <div class="col-md-5">
-                <div class="slider-search-box">
-                    <div class="search-box">
-                        <form>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="sel1">I am a:</label>
-                                        <div class="select">
-                                            <select class="form-control" id="sel1">
-                                                <option>Female looking for a male</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="sel1">I am here to:</label>
-                                        <select class="form-control" id="sel1">
-                                            <option>Make new friends</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-
-                                        <input type="name" class="form-control" id="fname" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-
-                                        <input type="name" class="form-control" id="Email" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="year-month-day">
-                                    <div class="col-md-4 col-sm-4 col-xs-4">
-                                        <div class="form-group">
-
-                                            <select class="form-control" id="sel1">
-                                                <option>Day</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4">
-                                        <div class="form-group">
-
-                                            <select class="form-control" id="sel1">
-                                                <option>Month</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 col-sm-4 col-xs-4">
-                                        <div class="form-group">
-
-                                            <select class="form-control" id="sel1">
-                                                <option>Year</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="sub-btn text-center">
-
-                                    <input type="button" class="btn custom-btn-primary custom-btn"
-                                           value="Find Love Today!">
-                                    <div class="box-text">
-                                        <p> By continuing, you're confirming that you've read and agree to our </br>
-                                            Terms and Conditions, Privacy Policy and Cookie Policy.</p>
-                                    </div>
-
-                                </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- visit charts-->
+    <!-- ============================================================== -->
+    <div class="col-lg-3 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title"><span class="lstick"></span>Visit Separation</h4>
+                <div id="visitor" style="height:250px; width:100%;"></div>
+                <table class="table vm font-14">
+                    <tr>
+                        <td class="b-0">Mobile</td>
+                        <td class="text-right font-medium b-0">38.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Tablet</td>
+                        <td class="text-right font-medium">30.8%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Projects of the month -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-lg-6 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <div>
+                        <h4 class="card-title"><span class="lstick"></span>Projects of the Month</h4></div>
+                </div>
+                <div class="table-responsive m-t-20">
+                    <table class="table vm no-th-brd no-wrap pro-of-month">
+                        <thead>
+                        <tr>
+                            <th colspan="2">Assigned</th>
+                            <th>Name</th>
+                            <th>Priority</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td style="width:50px;"><span class="round"><img
+                                            src="{{ asset('adminasset/images/users/1.jpg ')}}" alt="user"
+                                            width="50"></span></td>
+                            <td>
+                                <h6>Sunil Joshi</h6>
+                                <small class="text-muted">Web Designer</small>
+                            </td>
+                            <td>Elite Admin</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr class="active">
+                            <td><span class="round"><img src="{{ asset('adminasset/images/users/2.jpg ')}}"
+                                                         alt="user" width="50"></span></td>
+                            <td>
+                                <h6>Andrew</h6>
+                                <small class="text-muted">Project Manager</small>
+                            </td>
+                            <td>Real Homes</td>
+                            <td>Medium</td>
+                        </tr>
+                        <tr>
+                            <td><span class="round round-success"><img
+                                            src="{{ asset('adminasset/images/users/3.jpg ')}}" alt="user"
+                                            width="50"></span></td>
+                            <td>
+                                <h6>Bhavesh patel</h6>
+                                <small class="text-muted">Developer</small>
+                            </td>
+                            <td>MedicalPro Theme</td>
+                            <td>High</td>
+                        </tr>
+                        <tr>
+                            <td><span class="round round-primary"><img
+                                            src="{{ asset('adminasset/images/users/4.jpg ')}}" alt="user"
+                                            width="50"></span></td>
+                            <td>
+                                <h6>Nirav Joshi</h6>
+                                <small class="text-muted">Frontend Eng</small>
+                            </td>
+                            <td>Elite Admin</td>
+                            <td>Low</td>
+                        </tr>
+                        <tr>
+                            <td><span class="round round-warning"><img
+                                            src="{{ asset('adminasset/images/users/5.jpg ')}}" alt="user"
+                                            width="50"></span></td>
+                            <td>
+                                <h6>Micheal Doe</h6>
+                                <small class="text-muted">Content Writer</small>
+                            </td>
+                            <td>Helping Hands</td>
+                            <td>High</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- contact -->
+    <div class="col-lg-6 col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <h4 class="card-title"><span class="lstick"></span>My Contact</h4>
+                </div>
+                <div class="message-box contact-box">
+                    <div class="message-widget contact-widget">
+                        <!-- Message -->
+                        <a href="#">
+                            <div class="user-img"><img src="{{ asset('adminasset/images/users/1.jpg ')}}"
+                                                       alt="user" class="img-circle"> <span
+                                        class="profile-status online pull-right"></span></div>
+                            <div class="mail-contnet">
+                                <h5>Pavan kumar</h5> <span class="mail-desc">info@wrappixel.com</span></div>
+                        </a>
+                        <!-- Message -->
+                        <a href="#">
+                            <div class="user-img"><img src="{{ asset('adminasset/images/users/2.jpg ')}}"
+                                                       alt="user" class="img-circle"> <span
+                                        class="profile-status busy pull-right"></span></div>
+                            <div class="mail-contnet">
+                                <h5>Sonu Nigam</h5> <span class="mail-desc">pamela1987@gmail.com</span>
                             </div>
-                            <div class="clearfix"></div>
-                        </form>
-
+                        </a>
+                        <!-- Message -->
+                        <a href="#">
+                            <div class="user-img"><span class="round">A</span> <span
+                                        class="profile-status away pull-right"></span></div>
+                            <div class="mail-contnet">
+                                <h5>Arijit Sinh</h5> <span class="mail-desc">cruise1298.fiplip@gmail
+                                    .com</span></div>
+                        </a>
+                        <!-- Message -->
+                        <a href="#">
+                            <div class="user-img"><img src="{{ asset('adminasset/images/users/4.jpg ')}}"
+                                                       alt="user" class="img-circle"> <span
+                                        class="profile-status offline pull-right"></span></div>
+                            <div class="mail-contnet">
+                                <h5>Pavan kumar</h5> <span class="mail-desc">kat@gmail.com</span></div>
+                        </a>
+                        <!-- Message -->
+                        <a href="#">
+                            <div class="user-img"><img src="{{ asset('adminasset/images/users/5.jpg ')}}"
+                                                       alt="user" class="img-circle"> <span
+                                        class="profile-status offline pull-right"></span></div>
+                            <div class="mail-contnet">
+                                <h5>Andrew</h5> <span class="mail-desc">and@gmail.com</span></div>
+                        </a>
+                        <!-- Message -->
+                        <a href="#">
+                            <div class="user-img"><img src="{{ asset('adminasset/images/users/6.jpg ')}}"
+                                                       alt="user" class="img-circle"> <span
+                                        class="profile-status offline pull-right"></span></div>
+                            <div class="mail-contnet">
+                                <h5>Jonathan Jones</h5> <span class="mail-desc">jj@gmail.com</span></div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <section class="how-it-work">
-        <div class="row">
-            <div class="col-lg-2"></div>
-            <div class="col-lg-4">
-                <h1 class="hd-1">How it Works</h1>
-                <p class="para-1">Get started on true rendezvous today in 3 simple steps:</p>
-                <ul class="howitwork-list">
-                    <li>
-                        <div class="howitwork-icon"><i class="fa fa-vcard-o"></i></div>
-                        <div class="howitwork-details">
-                            <h2 class="hd-2">Create A Profile</h2>
-                            <p>Create a personalized profile, add photos and describe your ideal partner.</p>
-                        </div>
-
-                    </li>
-                    <li>
-                        <div class="howitwork-icon"><i class="fa fa-search"></i></div>
-                        <div class="howitwork-details">
-                            <h2 class="hd-2">Browse Members</h2>
-                            <p>Find members based on location, very special interests and lifestyle preferences.</p>
-                        </div>
-
-                    </li>
-                    <li>
-                        <div class="howitwork-icon"><i class="fa fa-comments"></i></div>
-                        <div class="howitwork-details">
-                            <h2 class="hd-2">Start Communicating</h2>
-                            <p>Show interest in the members you like and let the journey begin.</p>
-                        </div>
-
-                    </li>
-                </ul>
-            </div>
-            <div class="col-lg-6">
-                <div class="how-it-work-photo">
-                    <img src="https://meeting-room.progressionstudios.com/wp-content/uploads/2017/06/why-us-1.png" width="100%">
-                </div>
-            </div>
-    </section>
-    <section class="testiminials">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <h1 class="hd-1">They Found Love</h1>
-                    <div class="content">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="thumbnail adjust1">
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <img class="media-object img-rounded img-responsive" src="http://placehold.it/100">
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <div class="caption">
-                                                        <p class="text-info lead adjust2">I can't wait to test this out.</p>
-                                                        <p>This is a testimonial window. Feedback of user can be displayed here.</p>
-                                                        <blockquote class="adjust3">
-                                                            <p>- Abhijit Goswami</p>
-                                                        </blockquote>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="thumbnail adjust1">
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <img class="media-object img-rounded img-responsive" src="http://placehold.it/100">
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <div class="caption">
-                                                        <p class="text-info lead adjust2">I can't wait to test this out.</p>
-                                                        <p>This is a testimonial window. Feedback of user can be displayed here.</p>
-                                                        <blockquote class="adjust3">
-                                                            <p>- Abhijit Goswami</p>
-                                                        </blockquote>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="thumbnail adjust1">
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <img class="media-object img-rounded img-responsive" src="http://placehold.it/100">
-                                                </div>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <div class="caption">
-                                                        <p class="text-info lead adjust2">I can't wait to test this out.</p>
-                                                        <p>This is a testimonial window. Feedback of user can be displayed here.</p>
-                                                        <blockquote class="adjust3">
-                                                            <p>- Abhijit Goswami</p>
-                                                        </blockquote>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Controls -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h1 class="hd-1">Video Presentation</h1>
-                </div>
-            </div>
-        </div>
-    </section>
-    <section class="what-we-do">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="wwd-1">
-                        <h2 class="hd-3">PERSONAL <br/>VIDEO CHATS</h2>
-                        <p class="txt-1">Live video chat allows you to connect with your would-be partner much quicker.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="wwd-2">
-                        <h2 class="hd-3">100% FULLY
-                            <br/>SECURED</h2>
-                        <p class="txt-1">Live video chat allows you to connect with your would-be partner much quicker.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="wwd-3">
-                        <h2 class="hd-3">PERSONAL <br/>VIDEO CHATS</h2>
-                        <p class="txt-1">Live video chat allows you to connect with your would-be partner much quicker.</p>
-                    </div></div>
-            </div>
-        </div>
-    </section>
-    <footer>
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-
-                <div class="language">
-                    <div class="container">
-                        <div class="col-md-6">
-                        </div>
-                        <div class="col-md-6">
-
-                        </div>
+</div>
+<!-- ============================================================== -->
+<!-- Blog and website visit -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-lg-4 col-xlg-3">
+        <div class="card">
+            <img class="card-img-top img-responsive" src="{{ asset('adminasset/images/big/img1.jpg ')}}"
+                 alt="Card image cap">
+            <div class="card-body">
+                <h3 class="font-normal">Business development of rules 2017</h3>
+                <span class="label label-info label-rounded">Technology</span>
+                <p class="m-b-0 m-t-20">Titudin venenatis ipsum aciat. Vestibulum ullamcorper quam. nenatis
+                    ipsum ac feugiat. Ibulum ullamcorper</p>
+                <div class="d-flex m-t-20">
+                    <button class="btn p-l-0 btn-link ">Read more</button>
+                    <div class="ml-auto align-self-center">
+                        <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-heart-o"></i></a>
+                        <a href="javascript:void(0)" class="link m-r-10"><i class="fa fa-share-alt"></i></a>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 col-sm-6 footerleft ">
-                    <h6 class="heading7">About True Rendezvous</h6>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley.</p>
-                    <p><i class="fa fa-map-pin"></i>Address</p>
-                    <p><i class="fa fa-phone"></i> Phone </p>
-                    <p><i class="fa fa-envelope"></i> E-mail</p>
-
-                </div>
-
-                <div class="col-md-3 col-sm-6 paddingtop-bottom">
-                    <h6 class="heading7">Most Active Users</h6>
-                    <div class="post">
-                        <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
-                        <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
-                        <p>facebook crack the movie advertisment code:what it means for you <span>August 3,2015</span></p>
-                    </div>
-                </div>
-                <div class="col-md-2 col-sm-6 paddingtop-bottom">
-                    <h6 class="heading7">Useful Links</h6>
-                    <ul class="footer-ul">
-                        <li><a href="#"> Find Love</a></li>
-                        <li><a href="#"> Privacy Policy</a></li>
-                        <li><a href="#"> Terms & Conditions</a></li>
-                        <li><a href="#"> Match Profile</a></li>
-                        <li><a href="#"> Why True Rendezvous</a></li>
-                        <li><a href="#"> Love Blog</a></li>
-                        <li><a href="#"> True Stories</a></li>
+    </div>
+    <div class="col-lg-8 col-xlg-9">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex">
+                    <h4 class="card-title"><span class="lstick"></span>Website Visit</h4>
+                    <ul class="list-inline m-b-0 ml-auto">
+                        <li>
+                            <h6 class="text-muted text-success"><i class="fa fa-circle font-10 m-r-10 "></i>Site
+                                A view</h6></li>
+                        <li>
+                            <h6 class="text-muted text-info"><i class="fa fa-circle font-10 m-r-10"></i>Site
+                                B view</h6></li>
                     </ul>
                 </div>
-                <div class="col-md-3 col-sm-6 paddingtop-bottom">
-                    <h5 class="heading7">Trusted by Millions</h5>
-                </div>
-            </div>
-        </div>
-    </footer>
-    <!--footer start from here-->
-
-    <div class="copyright">
-        <div class="container">
-            <div class="col-md-6">
-                <p>© 2016 - All Rights with offsidetech</p>
-            </div>
-            <div class="col-md-6">
-                <ul class="bottom_ul">
-                    <li><a href="#">About us</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Faq's</a></li>
-                    <li><a href="#">Contact us</a></li>
-                    <li><a href="#">Site Map</a></li>
-                </ul>
+                <div class="website-visitor p-relative m-t-30" style="width:100%;"></div>
             </div>
         </div>
     </div>
+</div>
+<!-- ============================================================== -->
+<!-- End Page Content -->
+<!-- ============================================================== -->
 @endsection

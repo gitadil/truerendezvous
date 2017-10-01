@@ -43,4 +43,29 @@ class ManagerUser extends ManagerBase
         return $users;
     }
 
+    public static function getAllActiveUSers()
+    {
+        $users =DB::table('users')
+            ->where('is_active','=',1 )
+            ->orderByDesc('id')
+           ->paginate(2);
+
+        return $users;
+    }
+
+    public static function changeStatus($id)
+    {
+
+        $users = DB::table('users')
+            ->where('guid', $id)
+            ->update(['is_active' => 0]);
+
+        /*$users =DB::table('users')
+            ->where('is_active','=',1 )
+            ->orderByDesc('id')
+           ->paginate(2);*/
+
+        return $users;
+    }
+
 }
