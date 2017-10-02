@@ -355,15 +355,16 @@ select {
 }
 .members-functions > div {
 	display:inline-block;
-	margin-right:10px;
-	background:rgba(0,0,0,.5);
-	padding:6px 15px;
+	margin-right:4px;
+	background:rgba(0,0,0,.4);
+	padding:1px 14px 3px 14px;
 	border-radius:17px;
 
 }
 .members-functions > div a {
 	color:#fff;
-	font-size:16px;
+	font-size:11px;
+	font-weight: 300;
 }
 .members-functions > div a span {
 	padding-left:5px;
@@ -371,21 +372,29 @@ select {
 }
 .members-caption {
 
-	padding:25px 20px;
+	padding:20px 15px;
 	border-bottom-left-radius: 15px;
 	border-bottom-right-radius: 15px;
 	background: #eee;
 }
+.members-caption > p{
+	color: #808080;
+	font-weight: 300;
+	margin: 0;
+}
 .members-caption .member-name {
-	margin:0px;
+	margin:0;
 	margin-bottom:15px;
-
-
+	font-size: 17px;
+	font-weight: 400;
+}
+.members-caption .member-name > a{
+	color: #282c59;
 }
 .online-offline {
 	position: relative;
 	top: 4px;
-	font-size: 17px;
+	font-size: 14px;
 }
 .online-offline .offline {
 	color:#ccc;
@@ -397,12 +406,16 @@ select {
 
 
 }
+.search-section{
+	margin: 30px 0;
+}
 /* Sidebar of Members */
 .widget {
-	padding: 35px 30px;
+	padding: 15px 20px;
 	background: #eee;
 	border-radius: 15px;
 	margin-bottom: 40px;
+	color: #282c59;
 }
 .age-limit label {
 	display:block;
@@ -421,7 +434,7 @@ select {
 
 }
 .advance-search .checkbox, .advance-search  .radio {
-	margin:0px;
+	margin:0;
 
 
 
@@ -432,15 +445,16 @@ select {
 }
 .widget-title {
 	border-bottom:1px solid #ddd;
-	margin-bottom:0px;
+	margin-bottom:0;
 	padding-bottom:10px;
+	color: #282c59;
+	font-size: 16px;
 
 
 }
 .widget-title span {
-	font-size:16px;
-
-
+	font-size:14px;
+	font-weight: 400;
 }
 
 .popular-matches {
