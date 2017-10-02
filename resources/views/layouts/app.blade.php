@@ -2,16 +2,17 @@
 <html lang="{{ app()->getLocale() }}">
 @include('includes.head')
 <body>
-    <div id="app">
-        <div class="layout">
-            <header>
-                <div class="container">
-                    <div class="login-register">
-                        <div class="box-log-reg">
-                            <!-- Authentication Links -->
-                            <ul class="list-inline">
-                                @if (Auth::guest())
-                                <li><a href="{{ route('login') }}" ><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
+<div id="app">
+    <div class="layout">
+        <header>
+            <div class="container">
+                <div class="login-register">
+                    <div class="box-log-reg">
+                        <!-- Authentication Links -->
+                        <ul class="list-inline">
+                            @if (Auth::guest())
+                                <li><a href="{{ route('login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a>
+                                </li>
                                 {{--data-toggle="modal" data-target="#LoginModal"--}}
                                 <span>/</span>
                                 <li><a href="{{ route('register') }}" >Register </a></li>
