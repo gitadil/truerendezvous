@@ -201,7 +201,7 @@
                         </div>
                     </div>
                     <div class="logo ">
-                        <img src="https://19g8e3xdzsi8lh0i-zippykid.netdna-ssl.com/wp-content/themes/meeting-room-progression/images/logo.png" alt="Meeting Room" class="progression-studios-default-logo	">
+                        <img src="images/logo-1.png" alt="True Rendezvous" class="progression-studios-default-logo	">
                     </div>
                     <div class="navigation ">
                         <nav class="navbar navbar-inverse">

@@ -148,7 +148,9 @@
                                     <div class="col-md-4 col-lg-4 col-sm-6 col-xs-6">
                                         <div class="member">
                                             <div class="member-pic">
-                                                <a href="abc"><img class="img-responsive" src="https://19g8e3xdzsi8lh0i-zippykid.netdna-ssl.com/wp-content/uploads/avatars/33/5936900c157eb-bpfull.jpg" class="avatar user-33-avatar avatar-380 photo" width="380" height="380" alt="Profile picture of Diego"></a>
+                                                <a href="profile">
+                                                    <img class="img-responsive" src="images/profile-picture.png" class="avatar user-33-avatar avatar-380 photo" width="380" height="380" alt="Profile picture of Diego">
+                                                </a>
                                                 <div class="members-functions">
                                                     <div class="pr-msg">
                                                         <a href="#" title="Send a private message to this member">
@@ -160,10 +162,19 @@
                                                             <i class="fa fa-camera" aria-hidden="true"></i> 24
                                                         </a>
                                                     </div>
-                                                    <div class="fr-request">
-                                                        <a href="#" title="Add Friend">
-                                                            <i class="fa fa-user-plus" aria-hidden="true"></i>
-                                                        </a>
+                                                    {{--<div class="fr-request">--}}
+                                                        {{--<a href="#" title="Add Friend">--}}
+                                                            {{--<i class="fa fa-user-plus" aria-hidden="true"></i>--}}
+                                                        {{--</a>--}}
+                                                    {{--</div>--}}
+                                                    <div class="invite-status">
+                                                        <form>
+                                                            <div class="in-request">
+                                                                <a href="javascript:" data-toggle="modal" data-target="#paymentModal" title="Invite Partner">
+                                                                    Invite
+                                                                </a>
+                                                            </div>
+                                                        </form>
                                                     </div>
 
                                                 </div>
@@ -171,7 +182,7 @@
 
                                             <div class="members-caption">
                                                 <h3 class="member-name">
-                                                    <a href="#">{{$user->first_name}}, 29</a>
+                                                    <a href="profile">{{$user->first_name}}, 29</a>
                                                     <span class="online-offline pull-right"><i class="fa fa-circle @if($user->is_active==1) online @else offline @endif" aria-hidden="true" title="Offline"></i></span>
                                                 </h3>
 
@@ -602,10 +613,35 @@
                                 {{--</div>--}}
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
           </div>
     </section>
+    <div id="paymentModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
 
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Membership Pending</h4>
+
+                    <p>
+                        please subscribe to our plan to get your self member with true rendezvous. <br /><br />
+
+                        Once you become member with true rendezvous you can invite partner to view their complete profile.
+                    </p>
+
+                    <div class="text-center">
+                        <a class="btn custom-btn-primary custom-btn"  href="profile"> Pay  Now </a>
+                        <a class="btn custom-btn-primary custom-btn" class="close" data-dismiss="modal"> Cancel </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
