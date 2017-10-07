@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PersonalInformation;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\DocumentController AS DOCCtrl;
+use stdClass;
+use Faker\Provider\Uuid;
+
+
+
 
 class PersonalInformationController extends Controller
 {
@@ -39,6 +45,34 @@ class PersonalInformationController extends Controller
         $personalInfo->biography         = (!empty($request->biography)) ? $request->biography : '';
         $personalInfo->nationality_id    = (!empty($request->nationality_id)) ? $request->nationality_id : '';
 
+        //$document_type      = Config::get('enums.document_type.PersonalImagesSubType.ProfilePicture');
+
+        //Profile Image
+        $obj                = new stdClass();
+        $obj->title         = (!empty($request->degree_title)) ? $request->degree_title : '';
+        $obj->document_type = (!empty($document_type)) ? $document_type : 1;//Enum is not working that's why hard code this here
+        $obj->document_guid = Uuid::uuid();
+        $obj->user_id       = Auth::user()->guid;
+
+
+        /*echo "<pre>";print_r($request->profile_image_id);echo "</pre>";
+        echo "Line No # ".__LINE__ . " FILE NAME # ". __FILE__."<br/>";
+        die();*/
+        if ($file = $request->file('profile_image')) {
+            $name = microtime().'-'.$file->getClientOriginalName();
+            $file->move('images', $name);
+            $obj->path = $name;
+        }
+
+
+
+
+
+
+        $personalInfo->profile_image_id    = (!empty($profile_image_id)) ? $profile_image_id : '';
+
+
+
         $dropdowns = $this->BindDropDowns();
 
         if(empty($request->id)) //Add
@@ -63,7 +97,8 @@ class PersonalInformationController extends Controller
                                'place_of_birth_id' =>$personalInfo->place_of_birth_id,
                                'mother_tongue' =>$personalInfo->mother_tongue,
                                'biography' =>$personalInfo->biography,
-                               'nationality_id' =>$personalInfo->nationality_id
+                               'nationality_id' =>$personalInfo->nationality_id,
+                               'profile_image_id' =>$personalInfo->profile_image_id
                     )
                 );
             $message = 'Record Updated Successfully';

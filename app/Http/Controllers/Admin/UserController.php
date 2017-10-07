@@ -43,5 +43,19 @@ class UserController extends Controller
         return redirect('/admin/users');//->with($message);
     }
 
+    Public function detail($id)
+    {
+        $personalInfo      = ManagerUser::personaldetail($id);
+        /*echo "<pre>";print_r($personalInfo);echo "</pre>";
+        echo "Line No # ".__LINE__ . " FILE NAME # ". __FILE__."<br/>";
+        die();*/
+
+        $dropdowns  = self::BindDropDowns();
+
+        return  View::make('admin.user.detail')
+            ->with('personal',$personalInfo)
+            ->with('dropdowns',$dropdowns);
+    }
+
 
 }

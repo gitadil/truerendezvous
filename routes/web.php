@@ -59,3 +59,6 @@ Route::get('/admin', 'Admin\DashboardController@index');
 Route::get('/admin/users', 'Admin\UserController@index');
 Route::get('/admin/users/changestatus/{id}', 'Admin\UserController@changestatus');
 
+Route::get('/admin/user/detail/{id}', 'Admin\UserController@detail');
+
+

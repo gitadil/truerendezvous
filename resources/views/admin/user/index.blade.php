@@ -57,6 +57,11 @@
                                                     <i class="fa fa-edit">Change Status</i>
                                                 </button>
                                             </a>
+                                            <a href="/admin/user/detail/{{$user->guid}}" class=".btn .btn-app">
+                                                <button type="button" class="btn btn-warning">
+                                                    <i class="fa fa-edit">Detail</i>
+                                                </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 @else
