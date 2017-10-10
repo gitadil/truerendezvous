@@ -13,7 +13,7 @@
 
                             <div class="form-box-login">
                                 <div class="col-md-4">
-                                    <h1 class="login-hd">PERSONAL<br /> <span>INFO</span></h1>
+                                    <h1 class="login-hd">PERSONAL<br/> <span>INFO</span></h1>
                                 </div>
                                 <div class="col-md-8 wt-bg">
                                     <div class="col-md-12">
@@ -24,7 +24,7 @@
                                             @if(Session::has('message'))
                                                 <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
                                             @endif
-                                            <form method="POST" action="/personal/store">
+                                            <form method="POST" enctype="multipart/form-data" action="/personal/store">
                                                 {{ csrf_field() }}
 
                                                 @if(Auth::check())
@@ -36,23 +36,28 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group {{ $errors->has('gender_id') ? ' has-error' : '' }}">
                                                             <label for="gender_id" class="control-label">Gender</label>
-                                                            <select id="gender_id" required name="gender_id" class="form-control">
+                                                            <select id="gender_id" required name="gender_id"
+                                                                    class="form-control">
                                                                 <option value="">Select Gender</option>
 
                                                                 @foreach($dropdowns->gender as $key =>$value)
-                                                                    <option value="{{$key}}"  @if( $key== $Model->gender_id ) selected @endif >{{$value}}</option>
+                                                                    <option value="{{$key}}"
+                                                                            @if( $key== $Model->gender_id ) selected @endif >{{$value}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group {{ $errors->has('marital_status_id') ? ' has-error' : '' }}">
-                                                            <label for="marital_status_id" class="control-label">Marital Status</label>
-                                                            <select id="marital_status_id" required name="marital_status_id"
+                                                            <label for="marital_status_id" class="control-label">Marital
+                                                                Status</label>
+                                                            <select id="marital_status_id" required
+                                                                    name="marital_status_id"
                                                                     class="form-control">
                                                                 <option value="">Select Marital Status</option>
                                                                 @foreach($dropdowns->marital_status as $key =>$value)
-                                                                    <option value="{{$key}}" @if( $key== $Model->marital_status_id ) selected @endif >{{$value}}</option>
+                                                                    <option value="{{$key}}"
+                                                                            @if( $key== $Model->marital_status_id ) selected @endif >{{$value}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -61,7 +66,10 @@
                                                         <div class="form-group {{ $errors->has('dob') ? ' has-error' : '' }}">
                                                             <label for="dob" class="control-label">Date of birth</label>
 
-                                                            <input id="dob" type="text" class="form-control datepicker input-md" placeholder="Date of birth"  name="dob" value="{{$Model->dob }}" required>
+                                                            <input id="dob" type="text"
+                                                                   class="form-control datepicker input-md"
+                                                                   placeholder="Date of birth" name="dob"
+                                                                   value="{{$Model->dob }}" required>
 
                                                             @if ($errors->has('dob'))
                                                                 <span class="help-block">
@@ -73,45 +81,57 @@
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group {{ $errors->has('place_of_birth_id') ? ' has-error' : '' }}">
-                                                            <label for="place_of_birth_id" class="control-label">Place of Birth</label>
-                                                            <select id="place_of_birth_id" required name="place_of_birth_id"
+                                                            <label for="place_of_birth_id" class="control-label">Place
+                                                                of Birth</label>
+                                                            <select id="place_of_birth_id" required
+                                                                    name="place_of_birth_id"
                                                                     class="form-control">
                                                                 <option value="">Select Birth Place</option>
                                                                 @foreach($dropdowns->countries as $key =>$value)
-                                                                    <option value="{{$key}}" @if( $key== $Model->place_of_birth_id ) selected @endif>{{$value}}</option>
+                                                                    <option value="{{$key}}"
+                                                                            @if( $key== $Model->place_of_birth_id ) selected @endif>{{$value}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group {{ $errors->has('religion_id') ? ' has-error' : '' }}">
-                                                            <label for="religion_id" class="control-label">Religion</label>
-                                                            <select id="religion_id" required name="religion_id" class="form-control">
+                                                            <label for="religion_id"
+                                                                   class="control-label">Religion</label>
+                                                            <select id="religion_id" required name="religion_id"
+                                                                    class="form-control">
                                                                 <option value="">Select Religion</option>
                                                                 @foreach($dropdowns->religion as $key =>$value)
-                                                                    <option value="{{$key}}" @if( $key== $Model->religion_id ) selected @endif >{{$value}}</option>
+                                                                    <option value="{{$key}}"
+                                                                            @if( $key== $Model->religion_id ) selected @endif >{{$value}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group {{ $errors->has('body_type_id') ? ' has-error' : '' }}">
-                                                            <label for="body_type_id" class="control-label">Body Type</label>
-                                                            <select id="body_type_id" required name="body_type_id" class="form-control">
+                                                            <label for="body_type_id" class="control-label">Body
+                                                                Type</label>
+                                                            <select id="body_type_id" required name="body_type_id"
+                                                                    class="form-control">
                                                                 <option value="">Select Body Type</option>
                                                                 @foreach($dropdowns->body_type as $key =>$value)
-                                                                    <option value="{{$key}}" @if( $key== $Model->body_type_id ) selected @endif>{{$value}}</option>
+                                                                    <option value="{{$key}}"
+                                                                            @if( $key== $Model->body_type_id ) selected @endif>{{$value}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group {{ $errors->has('skin_tone_id') ? ' has-error' : '' }}">
-                                                            <label for="skin_tone_id" class="control-label">Skin Type</label>
-                                                            <select id="skin_tone_id" required name="skin_tone_id" class="form-control">
+                                                            <label for="skin_tone_id" class="control-label">Skin
+                                                                Type</label>
+                                                            <select id="skin_tone_id" required name="skin_tone_id"
+                                                                    class="form-control">
                                                                 <option value="">Select Skin Type</option>
                                                                 @foreach($dropdowns->skin_tone as $key =>$value)
-                                                                    <option value="{{$key}}"@if( $key== $Model->skin_tone_id ) selected @endif>{{$value}}</option>
+                                                                    <option value="{{$key}}"
+                                                                            @if( $key== $Model->skin_tone_id ) selected @endif>{{$value}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -119,10 +139,12 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group {{ $errors->has('height') ? ' has-error' : '' }}">
                                                             <label for="height" class="control-label">Height</label>
-                                                            <select id="height" required name="height" class="form-control">
+                                                            <select id="height" required name="height"
+                                                                    class="form-control">
                                                                 <option value="">Select Height</option>
                                                                 @foreach($dropdowns->height as $key =>$value)
-                                                                    <option value="{{$key}}"@if( $key== $Model->height ) selected @endif>{{$value}}</option>
+                                                                    <option value="{{$key}}"
+                                                                            @if( $key== $Model->height ) selected @endif>{{$value}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -130,21 +152,26 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group {{ $errors->has('cast_id') ? ' has-error' : '' }}">
                                                             <label for="cast_id" class="control-label">Cast</label>
-                                                            <select id="cast_id" required name="cast_id" class="form-control">
+                                                            <select id="cast_id" required name="cast_id"
+                                                                    class="form-control">
                                                                 <option value="">Select Cast</option>
                                                                 @foreach($dropdowns->cast as $key =>$value)
-                                                                    <option value="{{$key}}" @if( $key== $Model->cast_id ) selected @endif>{{$value}}</option>
+                                                                    <option value="{{$key}}"
+                                                                            @if( $key== $Model->cast_id ) selected @endif>{{$value}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
                                                         <div class="form-group {{ $errors->has('mother_tongue') ? ' has-error' : '' }}">
-                                                            <label for="mother_tongue" class="control-label">Language</label>
-                                                            <select id="mother_tongue" required name="mother_tongue" class="form-control">
+                                                            <label for="mother_tongue"
+                                                                   class="control-label">Language</label>
+                                                            <select id="mother_tongue" required name="mother_tongue"
+                                                                    class="form-control">
                                                                 <option value="">Select your language</option>
                                                                 @foreach($dropdowns->mother_tongue as $key =>$value)
-                                                                    <option value="{{$key}}" @if( $key== $Model->mother_tongue ) selected @endif>{{$value}}</option>
+                                                                    <option value="{{$key}}"
+                                                                            @if( $key== $Model->mother_tongue ) selected @endif>{{$value}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
@@ -152,18 +179,115 @@
                                                     <div class="col-md-6">
                                                         <div class="form-group {{ $errors->has('nationality_id') ? ' has-error' : '' }}">
                                                             <label for="nationality_id" class="control-label">Nationality</label>
-                                                            <select id="nationality_id" required name="nationality_id" class="form-control">
+                                                            <select id="nationality_id" required name="nationality_id"
+                                                                    class="form-control">
                                                                 <option value="">Select Nationality</option>
                                                                 @foreach($dropdowns->countries as $key =>$value)
-                                                                    <option value="{{$key}}" @if( $key== $Model->nationality_id ) selected @endif >{{$value}}</option>
+                                                                    <option value="{{$key}}"
+                                                                            @if( $key== $Model->nationality_id ) selected @endif >{{$value}}</option>
                                                                 @endforeach
                                                             </select>
                                                         </div>
                                                     </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group {{ $errors->has('personal_image') ? ' has-error' : '' }}">
+                                                            <label for="address" class="control-label">Profile
+                                                                Image</label>
+                                                            <input id="personal_image" type="file" class="form-control"
+                                                                   name="personal_image"
+                                                                   value="{{$Model->profile_image}}" required autofocus>
+                                                            <img src="/images/{{$Model->profile_image}}"
+                                                                 width="100" height="80"/></br>
+
+                                                            @if ($errors->has('personal_image'))
+                                                                <span class="help-block">
+                                                                <strong>{{ $errors->first('personal_image') }}</strong>
+                                                            </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group {{ $errors->has('nic_front') ? ' has-error' : '' }}">
+                                                            <label for="nic_front" class="control-label">NIC
+                                                                Front</label>
+                                                            <input id="nic_front" type="file" class="form-control"
+                                                                   name="nic_front"
+                                                                   value="{{$Model->nic_front}}">
+                                                            <img src="/images/{{$Model->nic_front }}"
+                                                                 width="100" height="80"/></br>
+
+                                                            @if ($errors->has('nic_front'))
+                                                                <span class="help-block">
+                                                                <strong>{{ $errors->first('nic_front') }}</strong>
+                                                            </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group {{ $errors->has('nic_back') ? ' has-error' : '' }}">
+                                                            <label for="nic_back" class="control-label">NIC Back</label>
+                                                            <input id="nic_back" type="file" class="form-control"
+                                                                   name="nic_back"
+                                                                   value="{{$Model->nic_back}}">
+                                                            <img src="/images/{{$Model->nic_back}}"
+                                                                 width="100" height="80"/></br>
+
+                                                            @if ($errors->has('nic_back'))
+                                                                <span class="help-block">
+                                                                <strong>{{ $errors->first('nic_back') }}</strong>
+                                                            </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group {{ $errors->has('driving_licence_front') ? ' has-error' : '' }}">
+                                                            <label for="driving_licence_front" class="control-label">Driving
+                                                                Licence Front</label>
+                                                            <input id="driving_licence_front" type="file"
+                                                                   class="form-control"
+                                                                   name="driving_licence_front"
+                                                                   value="{{$Model->dl_front}}">
+                                                            <img src="/images/{{$Model->dl_front}}"
+                                                                 width="100" height="80"/></br>
+
+
+                                                            @if ($errors->has('driving_licence_front'))
+                                                                <span class="help-block">
+                                                                <strong>{{ $errors->first('driving_licence_front') }}</strong>
+                                                            </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6">
+                                                        <div class="form-group {{ $errors->has('driving_licence_back') ? ' has-error' : '' }}">
+                                                            <label for="driving_licence_back" class="control-label">Driving
+                                                                Licence Back</label>
+                                                            <input id="driving_licence_back" type="file"
+                                                                   class="form-control"
+                                                                   name="driving_licence_back"
+                                                                   value="{{$Model->dl_back}}">
+                                                            <img src="/images/{{$Model->dl_back}}"
+                                                                 width="100" height="80"/></br>
+                                                            @if ($errors->has('driving_licence_back'))
+                                                                <span class="help-block">
+                                                                <strong>{{ $errors->first('driving_licence_back') }}</strong>
+                                                            </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
                                                     <div class="col-md-12">
                                                         <div class="form-group {{ $errors->has('biography') ? ' has-error' : '' }}">
-                                                            <label for="biography" class="control-label">About urself</label>
-                                                            <textarea id="biography" class="form-control" name="biography" value="{{ $Model->biography }}" required autofocus placeholder="Tell about yourself"></textarea>
+                                                            <label for="biography" class="control-label">About
+                                                                urself</label>
+                                                            <textarea id="biography" class="form-control"
+                                                                      name="biography" value="{{ $Model->biography }}"
+                                                                      placeholder="Tell about yourself"></textarea>
 
                                                             @if ($errors->has('biography'))
                                                                 <span class="help-block">
@@ -175,7 +299,8 @@
 
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <button type="submit" class="btn custom-btn-primary custom-btn">
+                                                            <button type="submit"
+                                                                    class="btn custom-btn-primary custom-btn">
                                                                 Next
                                                             </button>
                                                         </div>
@@ -183,9 +308,9 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <div class="clearfix"> </div>
+                                        <div class="clearfix"></div>
                                     </div>
-                                    <div class="clearfix"> </div>
+                                    <div class="clearfix"></div>
                                 </div>
                             </div>
                         </div>
