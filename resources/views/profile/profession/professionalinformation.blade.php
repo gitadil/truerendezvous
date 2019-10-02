@@ -56,14 +56,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
-                                                        <div class="form-group {{ $errors->has('organizaiton_name') ? ' has-error' : '' }}">
-                                                            <label for="organizaiton_name" class="control-label">Organizaiton</label>
-                                                            <input id="organizaiton_name" type="text" class="form-control"
-                                                                   name="organizaiton_name" value="{{ old('organizaiton_name') }}" autofocus placeholder="Organization">
+                                                        <div class="form-group {{ $errors->has('organization_name') ? ' has-error' : '' }}">
+                                                            <label for="organization_name" class="control-label">Organization</label>
+                                                            <input id="organization_name" type="text" class="form-control"
+                                                                   name="organization_name" value="{{ old('organization_name') }}" autofocus placeholder="Organization">
 
-                                                            @if ($errors->has('organizaiton_name'))
+                                                            @if ($errors->has('organization_name'))
                                                                 <span class="help-block">
-                                                                    <strong>{{ $errors->first('organizaiton_name') }}</strong>
+                                                                    <strong>{{ $errors->first('organization_name') }}</strong>
                                                                 </span>
                                                             @endif
                                                         </div>
